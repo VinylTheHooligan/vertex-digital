@@ -14,7 +14,7 @@
 /coverage
 
 # db
-.db
+*.db
 
 # next.js
 /.next/
