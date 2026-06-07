@@ -22,6 +22,24 @@
   }
 }
 
+@layer base {
+  button {
+    @apply bg-foreground text-background font-bold text-xl py-2 mt-3 rounded-sm cursor-pointer transition duration-100;
+  }
+
+  button:focus {
+    @apply bg-foreground/90;
+  }
+
+  button:hover {
+    @apply bg-foreground/70;
+  }
+
+  button:active {
+    @apply bg-foreground/40 scale-95;
+  }
+}
+
 html {
   background-position: center;
 }
@@ -55,8 +73,4 @@ input {
 
 textarea {
   @apply bg-foreground/25 rounded-xs w-full h-full py-1 px-2 focus:outline-none ring-2 ring-foreground/50 focus-within:ring-foreground;
-}
-
-button {
-  @apply bg-foreground text-background font-bold text-xl py-2 mt-3 rounded-sm;
 }

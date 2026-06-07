@@ -40,7 +40,7 @@ export default function Hero() {
                     <Image
                         src={williamMobile}
                         alt=""
-                        className="mb-3 rounded-xl shadow-2xl shadow-foreground/15 ring-4 ring-foreground"
+                        className="mb-3 rounded-xl shadow-2xl shadow-foreground/15 ring-4 ring-foreground w-50"
                     />
                 </div>
                 <h1 ref={h1Ref} className="text-4xl font-bold text-center">William Salembien</h1>

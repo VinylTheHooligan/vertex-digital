@@ -3,6 +3,7 @@
 import { Turnstile } from '@marsidev/react-turnstile';
 import { handleSubmit } from "@/src/app/actions/contact";
 import { useState } from "react";
+import FormField from '@/src/components/form/FormField';
 
 type FieldErrors = {
     email?: string[],
@@ -34,32 +35,18 @@ export default function Contact() {
             <span className="inline-block text-center">Ce formulaire est réservé aux sollicitations professionnelles.</span>
             
             <form action={action} className="flex flex-col mt-4 mx-3 gap-4 ring-2 ring-foreground rounded-sm py-3 px-4">
-                <div className="flex flex-col gap-1">
-                    <label className="font-bold" htmlFor="email">Email :</label>
-                    <div className="input-wrapper">
-                        <input type="email" id="email" name="email" required/>
-                    </div>
-                    { errors?.email && <span className="text-red-800">{errors.email[0]}</span> }
-                </div>
-                
-                <div className="flex flex-col gap-1">
-                    <label className="font-bold" htmlFor="subject">Sujet :</label>
-                    <div className="input-wrapper">
-                        <input id="subject" name="subject" type="text" required />
-                    </div>
-                    { errors?.subject && <span className="text-red-800">{errors.subject[0]}</span> }
-                </div>
-                
-                <div className="flex flex-col gap-1">
-                    <label className="font-bold" htmlFor="message">Message :</label>
-                    <textarea id="message" name="message" rows={6} required />
-                    { errors?.message && <span className="text-red-800">{errors.message[0]}</span> }
-                </div>
+
+                <FormField label="Email" id="email" name="email" type="email" error={errors?.email} />
+                <FormField label="Sujet" id="subject" name="subject" type="text" error={errors?.subject} />
+                <FormField label="Message" id="message" name="message" rows={6} error={errors?.message} />
 
                 <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
 
-                <Turnstile 
-                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                <Turnstile
+                    className="mt-3" 
+                    siteKey={process.env.NODE_ENV === 'development' 
+                        ? '1x00000000000000000000AA' 
+                        : process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
                     onSuccess={(token) => setToken(token)}
                 />
 

@@ -3,7 +3,9 @@ export async function verifyTurnstile(token: string): Promise<boolean> {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            secret: process.env.TURNSTILE_SECRET_KEY,
+            secret: process.env.NODE_ENV === 'development' ? 
+                    '1x0000000000000000000000000000000AA' :
+                    process.env.TURNSTILE_SECRET_KEY,
             response: token,
         })
     });
