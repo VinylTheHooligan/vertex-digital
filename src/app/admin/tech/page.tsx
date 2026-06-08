@@ -1,6 +1,7 @@
 import Header from "@/src/components/Header";
 import { prisma } from "@/src/lib/prisma";
 import Link from "next/link";
+import { deleteTechnology } from "@/src/app/actions/technology";
 
 export default async function AdminTech() {
 
@@ -19,8 +20,17 @@ export default async function AdminTech() {
                     </div>
                     <div className="grid grid-cols-1 ring-2 rounded-sm">
                         { technologies.map(tech => (
-                            <div key={tech.id}>
-                                {tech.name}
+                            <div className="flex place-items-center gap-3 mx-4 my-4" key={tech.id}>
+                                <img className="w-10" style={{ filter: 'var(--logo-filter)' }} src={tech.logo} />
+                                <span className="font-bold">{tech.name}</span>
+                                <div className="flex justify-end w-full mr-1">
+                                    <form action={async () => {
+                                        "use server";
+                                        await deleteTechnology(tech.id);
+                                    }}>
+                                        <button type="submit" className="form-button mt-0 w-12">X</button>
+                                    </form>
+                                </div>
                             </div>
                         ))}
                     </div>

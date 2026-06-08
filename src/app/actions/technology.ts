@@ -1,8 +1,11 @@
 "use server";
 
-import { saveImage } from "@/src/lib/image";
+import { saveSvg } from "@/src/lib/image";
 import { prisma } from "@/src/lib/prisma";
+import path from "node:path";
 import { z } from "zod";
+import fs from 'fs/promises';
+import { revalidatePath } from "next/cache";
 
 const technologySchema = z.object({
     name: z.string().min(1, { message: "Nom requis" }).max(50, { message: "Nom trop long" }),
@@ -23,7 +26,11 @@ export async function createTechnology(formData: FormData) {
     }
 
     try {
-        const logoPath = await saveImage(file, 'technologies', parsed.data.name.toLowerCase().replace(/\s+/g, '-'));
+        const logoPath = await saveSvg(
+            file, 
+            'technologies', 
+            parsed.data.name.toLowerCase().replace(/\s+/g, '-')
+        );
 
         await prisma.technology.create({
             data: {
@@ -37,4 +44,23 @@ export async function createTechnology(formData: FormData) {
     }
 
     return { success: true }
+}
+
+export async function deleteTechnology(id: number) {
+    try {
+        const tech = await prisma.technology.findUnique({ where: { id }});
+        if (!tech) return { serverError: "Technologie introuvable." };
+
+        //delete svg file
+        const filePath = path.join(process.cwd(), 'public', tech.logo);
+        await fs.unlink(filePath).catch(() => {});
+
+        await prisma.technology.delete({ where: { id } });
+        revalidatePath('/admin/tech');
+    } catch (error) {
+        console.error(error);
+        return { serverError: "Une erreur est survenue." };
+    }
+
+    return { success: true };
 }

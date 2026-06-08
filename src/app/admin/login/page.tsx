@@ -22,7 +22,7 @@ export default function LoginPage() {
             <div className="grid grid-cols-1 gap-2 mx-3">
                 <h2>Accès administrateur</h2>
                 <span className="inline-block text-center">Toute tentative malicieuse désactivera l'accès jusqu'à l'intervention d'un administrateur.</span>
-                <form action={action}>
+                <form className="form-style" action={action}>
                     <FormFieldProps label="Utilisateur" id="username" name="username" type="text" />
                     <FormFieldProps label="Mot de passe" id="password" name="password" type="password" />
 

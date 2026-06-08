@@ -3,6 +3,7 @@
 :root {
   --background: #2B233E;
   --foreground: #8ADEC5;
+  --logo-filter: brightness(0) saturate(100%) invert(83%) sepia(28%) saturate(500%) hue-rotate(115deg);
 }
 
 @theme inline {
@@ -75,7 +76,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-form {
+.form-style {
   @apply flex flex-col mt-4 mx-3 gap-4 ring-2 ring-foreground rounded-sm py-3 px-4;
 }
 

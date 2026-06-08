@@ -48,3 +48,7 @@ next-env.d.ts
 /generated/prisma
 
 /generated/prisma
+
+# images
+/public/images/technologies
+/public/images/projects

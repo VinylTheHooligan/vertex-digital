@@ -3,6 +3,7 @@
 import { createTechnology } from "@/src/app/actions/technology";
 import FormField from "@/src/components/form/FormField";
 import Header from "@/src/components/Header";
+import Link from "next/link";
 import { useState } from "react";
 
 type FieldErrors = {
@@ -23,22 +24,20 @@ export default function AdminTechCreate() {
         if (res?.success) setSuccess(true);
     }
 
-    if (success) {
-        return <p className="text-center mt-10">Technologie créée avec succès !</p>
-    }
-
     return (
         <>
             <Header />
             <h2>Créer une technologie</h2>
-            <form action={action}>
+            <form className="form-style" action={action}>
                 <FormField label="Nom" id="name" name="name" type="text" error={errors?.name}/>
-                <FormField label="Logo" id="logo" name="logo" type="file" accept="image/*"/>
+                <FormField label="Logo" id="logo" name="logo" type="file" accept=".svg"/>
                 
                 {serverError && <span className="text-red-800">{serverError}</span>}
+                {success && <span className="font-bold">La technologie à été créer avec succès !</span>}
 
                 <button type="submit" className="form-button">Créer</button>
             </form>
+            <Link href='/admin/tech' className="form-button mx-5 mt-20">Retourner à la liste</Link>
         </>
     );
 }

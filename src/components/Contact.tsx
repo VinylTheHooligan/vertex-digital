@@ -34,7 +34,7 @@ export default function Contact() {
             <h2>Me contacter</h2>
             <span className="inline-block text-center">Ce formulaire est réservé aux sollicitations professionnelles.</span>
             
-            <form action={action}>
+            <form className="form-style" action={action}>
 
                 <FormField label="Email" id="email" name="email" type="email" error={errors?.email} />
                 <FormField label="Sujet" id="subject" name="subject" type="text" error={errors?.subject} />
