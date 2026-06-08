@@ -2,7 +2,7 @@
 
 import { motion, useInView, Variants } from "motion/react";
 import { useRef } from "react";
-import ProjectCard from "@/src/components/project/ProjectCard";
+import ProjectCard from "@/components/project/ProjectCard";
 
 const container: Variants = {
     hidden: {},

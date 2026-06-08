@@ -1,7 +1,7 @@
 "use server";
 
-import { saveSvg } from "@/src/lib/image";
-import { prisma } from "@/src/lib/prisma";
+import { saveSvg } from "@/lib/image";
+import { prisma } from "@/lib/prisma";
 import path from "node:path";
 import { z } from "zod";
 import fs from 'fs/promises';

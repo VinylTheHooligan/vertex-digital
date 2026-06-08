@@ -1,6 +1,6 @@
-import EditProjectForm from "@/src/components/form/EditProjectForm";
-import Header from "@/src/components/Header";
-import { prisma } from "@/src/lib/prisma";
+import EditProjectForm from "@/components/form/EditProjectForm";
+import Header from "@/components/Header";
+import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 

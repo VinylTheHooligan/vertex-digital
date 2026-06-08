@@ -1,5 +1,5 @@
-import { prisma } from "../lib/prisma";
-import ProjectsGrid from "@/src/components/project/ProjectsGrid";
+import { prisma } from "@/lib/prisma";
+import ProjectsGrid from "@/components/project/ProjectsGrid";
 
 export default async function Project() {
 

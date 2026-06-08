@@ -1,7 +1,7 @@
 "use server";
 
-import { prisma } from "@/src/lib/prisma";
-import { verifyTurnstile } from "@/src/lib/turnstile";
+import { prisma } from "@/lib/prisma";
+import { verifyTurnstile } from "@/lib/turnstile";
 import { headers } from "next/headers";
 import { z } from "zod";
 

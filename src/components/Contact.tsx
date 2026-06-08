@@ -1,9 +1,9 @@
 'use client'
 
 import { Turnstile } from '@marsidev/react-turnstile';
-import { handleSubmit } from "@/src/app/actions/contact";
+import { handleSubmit } from "@/actions/contact";
 import { useState } from "react";
-import FormField from '@/src/components/form/FormField';
+import FormField from '@/components/form/FormField';
 
 type FieldErrors = {
     email?: string[],

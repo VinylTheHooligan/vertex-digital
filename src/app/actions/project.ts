@@ -1,7 +1,7 @@
 "use server";
 
-import { saveImage } from "@/src/lib/image";
-import { prisma } from "@/src/lib/prisma";
+import { saveImage } from "@/lib/image";
+import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import path from "node:path";
 import { z } from "zod";

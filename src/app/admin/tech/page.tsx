@@ -1,7 +1,7 @@
-import Header from "@/src/components/Header";
-import { prisma } from "@/src/lib/prisma";
+import Header from "@/components/Header";
+import { prisma } from "@/lib/prisma";
 import Link from "next/link";
-import { deleteTechnology } from "@/src/app/actions/technology";
+import { deleteTechnology } from "@/actions/technology";
 
 export default async function AdminTech() {
 

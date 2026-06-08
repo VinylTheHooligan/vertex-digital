@@ -1,8 +1,8 @@
 "use client";
 
-import { createTechnology } from "@/src/app/actions/technology";
-import FormField from "@/src/components/form/FormField";
-import Header from "@/src/components/Header";
+import { createTechnology } from "@/actions/technology";
+import FormField from "@/components/form/FormField";
+import Header from "@/components/Header";
 import Link from "next/link";
 import { useState } from "react";
 

@@ -1,5 +1,5 @@
-import Header from "@/src/components/Header";
-import { prisma } from "@/src/lib/prisma";
+import Header from "@/components/Header";
+import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
 const PER_PAGE = 10;

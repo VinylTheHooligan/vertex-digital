@@ -1,6 +1,6 @@
 "use server";
 
-import { SessionData, sessionsOptions } from "@/src/lib/session";
+import { SessionData, sessionsOptions } from "@/lib/session";
 import bcrypt from "bcryptjs";
 import { getIronSession } from "iron-session";
 import { cookies } from "next/headers";

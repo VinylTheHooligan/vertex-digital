@@ -1,6 +1,6 @@
 import { getIronSession } from "iron-session";
 import { NextRequest, NextResponse } from "next/server";
-import { SessionData, sessionsOptions } from "@/src/lib/session";
+import { SessionData, sessionsOptions } from "@/lib/session";
 
 export async function proxy(request: NextRequest) {
     console.log("middleware called", request.nextUrl.pathname);

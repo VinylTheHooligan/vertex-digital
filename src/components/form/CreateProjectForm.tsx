@@ -1,8 +1,8 @@
 "use client";
 
-import { createProject } from "@/src/app/actions/project";
+import { createProject } from "@/actions/project";
 import { useState } from "react";
-import FormField from "@/src/components/form/FormField";
+import FormField from "@/components/form/FormField";
 
 type Technology = {
     id: number,

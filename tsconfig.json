@@ -22,8 +22,10 @@
     "paths": {
       "@/*": ["./*"],
       "@/src/*": ["./src/*"],
-      "@/lib/*": ["./lib/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/actions/*": ["./src/app/actions/*"],
       "@/public/*": ["./public/*"],
+      "@/components/*": ["./src/components/*"],
     },
   },
   "include": [

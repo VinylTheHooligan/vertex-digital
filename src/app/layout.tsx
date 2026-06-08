@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import bg from "@/public/images/bg.png";
 import "./globals.css";
 
 const roboto = Roboto({

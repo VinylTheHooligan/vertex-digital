@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from "react";
-import { login } from "@/src/app/actions/auth";
-import Header from "@/src/components/Header";
-import FormFieldProps from "@/src/components/form/FormField";
+import { login } from "@/actions/auth";
+import Header from "@/components/Header";
+import FormFieldProps from "@/components/form/FormField";
 import { Turnstile } from "@marsidev/react-turnstile";
 
 export default function LoginPage() {
