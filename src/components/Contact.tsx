@@ -30,11 +30,11 @@ export default function Contact() {
     }
 
     return (
-        <div className="grid grid-cols-1 gap-2">
-            <h2 className="text-3xl text-center">Me contacter</h2>
+        <section className="grid grid-cols-1 gap-2">
+            <h2>Me contacter</h2>
             <span className="inline-block text-center">Ce formulaire est réservé aux sollicitations professionnelles.</span>
             
-            <form action={action} className="flex flex-col mt-4 mx-3 gap-4 ring-2 ring-foreground rounded-sm py-3 px-4">
+            <form action={action}>
 
                 <FormField label="Email" id="email" name="email" type="email" error={errors?.email} />
                 <FormField label="Sujet" id="subject" name="subject" type="text" error={errors?.subject} />
@@ -53,8 +53,8 @@ export default function Contact() {
                 { serverError && <span className="text-red-800">{serverError}</span> }
                 { success && <span className="text-lg">Votre message a bien été envoyé, merci !</span> }
 
-                <button type="submit" disabled={!token}>Envoyer</button>
+                <button type="submit" className="form-button" disabled={!token}>Envoyer</button>
             </form>
-        </div>
+        </section>
     );
 }

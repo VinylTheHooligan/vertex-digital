@@ -27,14 +27,14 @@ export default function Hero() {
         items.forEach((el, i) => {
             animate(
                 el,
-                { opacity: [0, 1], y: [40, 0] } as any,
+                { opacity: [0, 1], x: [40, 0] } as any,
                 { duration: 0.6, delay: i * 0.15, easing: "ease-out" } as any,
             );
         });
     }, [])
 
     return (
-        <div className="mx-3">
+        <section className="mx-3">
             <div className="flex flex-col gap-3 items-center">
                 <div ref={imageRef}>
                     <Image
@@ -44,11 +44,11 @@ export default function Hero() {
                     />
                 </div>
                 <h1 ref={h1Ref} className="text-4xl font-bold text-center">William Salembien</h1>
-                <span ref={spanRef} className="text-xl font-semibold inline-block text-center"> Freelance Software Engineer - Full-stack Web (Symfony, Next.js, Tailwind)</span>
+                <span ref={spanRef} className="text-xl font-semibold inline-block text-center"> Freelance  Full-stack (Symfony, Next.js, Tailwind)</span>
                 <p ref={pRef} className="text-lg text-center mt-3">
                     Je conçois des applications web fiables, performante et respectant les bonnes pratiques du web. Je porte également mon attention sur l'architecture, à la qualité du code et à l'expérience utilisateur.
                 </p>
             </div>
-        </div>
+        </section>
     );
 }

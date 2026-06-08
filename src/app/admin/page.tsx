@@ -7,19 +7,22 @@ export default function Admin() {
         <>
             <Header />
             <div className="flex flex-col gap-4 mx-3 mt-8">
-            <h1 className="text-3xl font-bold text-center">Administration</h1>
-            <div className="grid grid-cols-1 gap-3 mt-4">
-                <Link href="/admin/contacts" className="ring-2 ring-foreground rounded-sm py-3 px-4 text-center">
-                    Contacts
-                </Link>
-                <Link href="/admin/projects" className="ring-2 ring-foreground rounded-sm py-3 px-4 text-center">
-                    Projets
-                </Link>
-                <Link href="/admin/bans" className="ring-2 ring-foreground rounded-sm py-3 px-4 text-center">
-                    Bans
-                </Link>
+                <h2>Administration</h2>
+                <div className="grid grid-cols-1 gap-3 mt-4">
+                    <Link href="/admin/contacts" className="form-button text-center">
+                        Contacts
+                    </Link>
+                    <Link href="/admin/projects" className="form-button text-center">
+                        Projets
+                    </Link>
+                    <Link href="/admin/tech" className="form-button text-center">
+                        Technologies
+                    </Link>
+                    <Link href="/admin/bans" className="form-button text-center">
+                        Bans
+                    </Link>
+                </div>
             </div>
-        </div>
         </>
     );
 }

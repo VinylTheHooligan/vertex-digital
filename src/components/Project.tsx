@@ -1,9 +1,9 @@
 export default function Project() {
 
     return (
-        <div>
+        <section>
             <h2>Projet</h2>
             
-        </div>
+        </section>
     );
 }

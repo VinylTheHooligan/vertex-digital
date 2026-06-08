@@ -1,15 +1,19 @@
 import Hero from "@/src/components/Hero";
 import Header from "@/src/components/Header";
 import Project from "@/src/components/Project";
-import Contact from "../components/Contact";
+import Contact from "@/src/components/Contact";
+import Footer from "@/src/components/Footer";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <Hero />
-      <Project />
-      <Contact />
+      <main>
+        <Hero />
+        <Project />
+        <Contact />
+      </main>
+      <Footer />
     </>
   );
 }
