@@ -30,7 +30,7 @@ export default function Contact() {
     }
 
     return (
-        <section className="grid grid-cols-1 gap-2">
+        <section id="contact-me" className="grid grid-cols-1 gap-2 pt-10">
             <h2>Me contacter</h2>
             <span className="inline-block text-center">Ce formulaire est réservé aux sollicitations professionnelles.</span>
             

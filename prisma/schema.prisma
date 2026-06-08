@@ -16,6 +16,8 @@ model Project {
   createdAt     DateTime      @default(now())
   startedAt     DateTime
   endedAt       DateTime?
+  github        String?
+  web           String?
 }
 
 model Technology {

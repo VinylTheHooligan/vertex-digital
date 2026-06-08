@@ -48,6 +48,10 @@ export default function Hero() {
                 <p ref={pRef} className="text-lg text-center mt-3">
                     Je conçois des applications web fiables, performante et respectant les bonnes pratiques du web. Je porte également mon attention sur l'architecture, à la qualité du code et à l'expérience utilisateur.
                 </p>
+                <div className="grid grid-cols-1 gap-3 w-full">
+                    <a href="#project-section" className="form-button py-3 px-5 mx-10">Mes projets</a>
+                    <a href="#contact-me" className="form-button py-3 px-5 mx-10">Me contacter</a>
+                </div>
             </div>
         </section>
     );

@@ -37,7 +37,7 @@ export default function AdminTechCreate() {
 
                 <button type="submit" className="form-button">Créer</button>
             </form>
-            <Link href='/admin/tech' className="form-button mx-5 mt-20">Retourner à la liste</Link>
+            <Link href='/admin/tech' className="form-button mx-5 my-10">Retourner à la liste</Link>
         </>
     );
 }

@@ -31,7 +31,7 @@ export async function saveImage(
     await fs.mkdir(outputDir, { recursive: true });
 
     await sharp(buffer)
-        .resize(width, height, { fit: 'inside', withoutEnlargement: true })
+        .resize(width, height, { fit: 'fill', withoutEnlargement: true })
         .webp({ quality: 75 })
         .toFile(path.join(outputDir, `${filename}.webp`));
     return `/images/${folder}/${filename}.webp`;
