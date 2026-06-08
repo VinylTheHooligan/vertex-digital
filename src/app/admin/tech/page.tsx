@@ -36,6 +36,7 @@ export default async function AdminTech() {
                     </div>
                 </div>
             </div>
+            <Link href="/admin" className="form-button mt-5 mx-5">Retour au menu</Link>
         </>
     );
 }

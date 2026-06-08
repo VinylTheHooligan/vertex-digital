@@ -23,7 +23,7 @@ export default async function AdminContact({ searchParams }: { searchParams: Pro
     return (
         <>
             <Header />
-            <div className="flex flex-col mx-3">
+            <main className="flex flex-col mx-3">
                 <h2>Contact</h2>
                 <div className="grid grid-cols-1 gap-5 mt-5">
                     {contacts.map(contact => (
@@ -64,7 +64,8 @@ export default async function AdminContact({ searchParams }: { searchParams: Pro
                         <Link href={`/admin/contacts?page=${currentPage + 1}`}>Suivant</Link>
                     )}
                 </div>
-            </div>
+                <Link href="/admin" className="form-button mt-5 mx-5">Retour au menu</Link>
+            </main>
         </>
     );
 }

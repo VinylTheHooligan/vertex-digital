@@ -13,7 +13,7 @@ export default async function AdminProject() {
     return (
         <>
             <Header />
-            <main>
+            <main className="flex flex-col">
                 <h2>Projets</h2>
                 <div className="flex flex-col mt-5 gap-6">
                     <div className="flex justify-end">
@@ -57,6 +57,7 @@ export default async function AdminProject() {
                         ))}
                     </div>
                 </div>
+                <Link href="/admin" className="form-button mt-5 mx-5">Retour au menu</Link>
             </main>
         </>
     );

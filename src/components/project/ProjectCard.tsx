@@ -33,7 +33,7 @@ export default function ProjectCard({
             <div className="flex flex-col p-4 gap-3">
                 <div className="flex flex-col gap-2">
                     <div className="flex items-baseline justify-between">
-                        <span className="text-lg font-semibold">{name}</span>
+                        <span className="text-xl font-semibold">{name}</span>
                         <span className="text-xs text-foreground/70">
                             {startedAt.toLocaleDateString('fr-FR', { month: 'short', year: 'numeric'})} - {endedAt ? endedAt.toLocaleDateString('fr-FR', { month: 'short', year: 'numeric'}) : 'En cours' }
                         </span>

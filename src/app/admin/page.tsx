@@ -6,7 +6,7 @@ export default function Admin() {
     return (
         <>
             <Header />
-            <div className="flex flex-col gap-4 mx-3 mt-8">
+            <main className="flex flex-col gap-4 mx-3 mt-8">
                 <h2>Administration</h2>
                 <div className="grid grid-cols-1 gap-3 mt-4">
                     <Link href="/admin/contacts" className="form-button text-center">
@@ -22,7 +22,7 @@ export default function Admin() {
                         Bans
                     </Link>
                 </div>
-            </div>
+            </main>
         </>
     );
 }
