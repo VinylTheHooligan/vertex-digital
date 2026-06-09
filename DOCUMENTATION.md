@@ -19,6 +19,7 @@ Le point d'entrée idéal. Contient :
 - 📝 Licence et contact
 - 🌗 Thème sombre/jour via provider context
 - 📱 UI mobile-first responsive
+ - 📄 Gestion CV via back-office (upload PDF)
 
 **À lire en premier !**
 

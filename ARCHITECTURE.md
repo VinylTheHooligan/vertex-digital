@@ -82,6 +82,8 @@ src/app/
 │   │   ├── page.tsx         # Liste technologies
 │   │   └── create/
 │   │       └── page.tsx     # Création technologie
+│   ├── cv/
+│   │   └── page.tsx         # Upload / gestion CV (PDF)
 │   └── contacts/
 │       └── page.tsx         # Consultation messages contact
 ├── legal/
