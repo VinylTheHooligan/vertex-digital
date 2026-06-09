@@ -1,6 +1,6 @@
 "use client";
 
-import { createTechnology } from "@/actions/technology";
+import { createTechnology } from "@/app/actions/technology";
 import FormField from "@/components/form/FormField";
 import Header from "@/components/Header";
 import Link from "next/link";

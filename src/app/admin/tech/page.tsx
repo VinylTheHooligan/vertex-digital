@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { deleteTechnology } from "@/app/actions/technology";
-import { Technology } from "@/generated/prisma/browser";
+import { Technology } from "@/generated/prisma/client/browser";
 
 export default async function AdminTech() {
 
