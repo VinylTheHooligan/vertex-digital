@@ -58,6 +58,7 @@ jobs:
             set -e
             cd "${{ secrets.SSH_PATH }}"
             npm ci
+            npx prisma generate
             npm run build
             npm ci --omit=dev
             npx prisma migrate deploy
