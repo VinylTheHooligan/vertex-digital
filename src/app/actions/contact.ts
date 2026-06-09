@@ -41,6 +41,24 @@ export async function handleSubmit(formData: FormData) {
                 ?? headersList.get('x-real-ip') 
                 ?? 'unknown';
 
+    await prisma.contact.deleteMany({
+        where: {
+            ip,
+            createdAt: { lt: new Date(Date.now() - 60 * 5000)}
+        }
+    })
+
+    const recentSubmission = await prisma.contact.findFirst({
+        where: {
+            ip,
+            createdAt: { gte: new Date(Date.now() - 60 * 5000)}
+        }
+    });
+
+    if (recentSubmission) {
+        return { serverError: "Une erreur est survenue." };
+    }
+
     try {
         await prisma.contact.create({
             data: {

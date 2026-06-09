@@ -7,10 +7,10 @@ export default function Privacy() {
         <>
             <Header />
             <main className="flex flex-col gap-10 mx-3 mb-10">
-                <h2>Politique de confidentialité</h2>
+                <h1>Politique de confidentialité</h1>
                 <div className="flex flex-col gap-15">
                     <section>
-                        <h3 className="mb-3">1. Données collectées</h3>
+                        <h2 className="mb-3">1. Données collectées</h2>
                         <p>
                             Lorsque vous utilisez le formulaire de contact, les données suivantes sont collectées : <br/><br/>
 
@@ -21,7 +21,7 @@ export default function Privacy() {
                         </p>
                     </section>
                     <section>
-                        <h3 className="mb-3">2. Finalité de la collecte</h3>
+                        <h2 className="mb-3">2. Finalité de la collecte</h2>
                         <p>
                             Ces données sont utilisées uniquement pour :<br/><br/>
 
@@ -32,7 +32,7 @@ export default function Privacy() {
                         </p>
                     </section>
                     <section>
-                        <h3 className="mb-3">3. Base légale</h3>
+                        <h2 className="mb-3">3. Base légale</h2>
                         <p>
                             La collecte repose sur :<br/><br/>
 
@@ -41,7 +41,7 @@ export default function Privacy() {
                         </p>
                     </section>
                     <section>
-                        <h3 className="mb-3">4. Durée de conservation</h3>
+                        <h2 className="mb-3">4. Durée de conservation</h2>
                         <p>
                             Les données sont accessibles uniquement à :<br/><br/>
 
@@ -52,7 +52,7 @@ export default function Privacy() {
                         </p>
                     </section>
                     <section>
-                        <h3 className="mb-3">5. Destinataires</h3>
+                        <h2 className="mb-3">5. Destinataires</h2>
                         <p>
                             Les données sont accessibles uniquement à :<br/><br/>
 
@@ -63,7 +63,7 @@ export default function Privacy() {
                         </p>
                     </section>
                     <section>
-                        <h3 className="mb-3">6. Droits des utilisateurs</h3>
+                        <h2 className="mb-3">6. Droits des utilisateurs</h2>
                         <p>
                             Conformément au RGPD, vous disposez des droits suivants :<br/><br/>
 
@@ -77,14 +77,14 @@ export default function Privacy() {
                         </p>
                     </section>
                     <section>
-                        <h3 className="mb-3">7. Cookies</h3>
+                        <h2 className="mb-3">7. Cookies</h2>
                         <p>
                             Ce site <b>n'utilise aucun cookie nécessitant votre consentement</b>.<br/>
                             Seuls des cookies techniques indispensables au fonctionnement du site peuvent être utilisés.
                         </p>
                     </section>
                     <section>
-                        <h3 className="mb-3">8. Sécurité</h3>
+                        <h2 className="mb-3">8. Sécurité</h2>
                         <p>
                             Les données sont protégées par :<br/><br/>
 

@@ -50,13 +50,13 @@ export default function ProjectCard({
                         <div className="flex gap-4 border-t border-foreground/20 pt-3">
                             {github && (
                                 <a href={github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-foreground/85">
-                                    <img src="/images/github.svg" className="w-4 h-4" style={{ filter: 'var(--logo-filter)' }} />
+                                    <img src="/images/github.svg" className="w-4 h-4" style={{ filter: 'var(--logo-filter)' }} alt="Logo de lien Github" />
                                     Github
                                 </a>
                             )}
                             {web && (
                                 <a href={web} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm text-foreground/85">
-                                    <img src="/images/link.svg" className="w-4 h-4" style={{ filter: 'var(--logo-filter)' }} />
+                                    <img src="/images/link.svg" className="w-4 h-4" style={{ filter: 'var(--logo-filter)' }} alt="Logo de lien" />
                                     Site web
                                 </a>
                             )}
