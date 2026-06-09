@@ -7,11 +7,6 @@ import { useEffect, useState } from "react";
 export default function Header() {
 
     const {isDark, toggle} = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     return (
         <header className="sticky top-0 z-50 grid grid-cols-3 grid-rows-1 backdrop-blur-xs backdrop-brightness-85 py-4 mb-10">
@@ -22,8 +17,7 @@ export default function Header() {
                     <path d="M1213.3,539.23c-61.42,82.14-161.04,141.47-278.68,155.23h-284.47l16.77-26.35,82-128.88h185.7c100.61-13.1,174.67-100.91,171.08-199.15-2.78-75.96-51.43-142.79-120.95-171.52-15.73-6.51-32.54-11.06-50.13-13.33h-474.78L558.6,0h376.02c25.47,2.94,50.12,8.03,73.75,15.03,20.72,6.14,40.64,13.76,59.63,22.69,59.24,27.87,109.36,68.58,145.89,117.51,38.99,52.21,62.51,113.77,65.17,179.07,3.04,74.48-21.41,145.65-65.76,204.93Z" />
                 </svg>
             </Link>
-            <div className="flex items-center justify-end mx-5">
-                {mounted && (
+            <div className="flex items-center justify-end mx-5" suppressHydrationWarning>
                     <div className="relative rounded-full duration-300 w-16 h-8 ring-2 ring-foreground">
                         <label className="relative inline-flex cursor-pointer h-8 w-16 select-none">
                             <input
@@ -58,7 +52,6 @@ export default function Header() {
                             </div>
                         </label>
                     </div>
-                )}
             </div>
         </header>
     );
