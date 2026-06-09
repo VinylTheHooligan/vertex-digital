@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { sessionsOptions } from '@/src/lib/session';
+import { sessionsOptions } from '@/lib/session';
 
 describe('Variables d\'environnement', () => {
     it('ADMIN_USERNAME est défini', () => {

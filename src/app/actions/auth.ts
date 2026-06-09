@@ -1,11 +1,13 @@
 "use server";
 
 import { SessionData, sessionsOptions } from "@/lib/session";
-import { prisma } from "@/src/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 import { getIronSession } from "iron-session";
-import { cookies, headers } from "next/headers";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { getIp } from "@/lib/ip";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 type FormUser = {
     username: string,
@@ -13,15 +15,18 @@ type FormUser = {
 }
 
 export async function login(formData: FormData) {
+
+    const token = formData.get('token') as string;
+    if (!token || !await verifyTurnstile(token)) {
+        return { error: "Vérification échouée, réessayez." };
+    }
+
     const userData: FormUser = {
         username: formData.get('username') as string,
         password: formData.get('password') as string,
     }
 
-    const headersList = await headers();
-    const ip = headersList.get('x-forwarded-for')?.split(',')[0].trim()
-            ?? headersList.get('x-real-ip')
-            ?? 'unknown';
+    const ip = await getIp();
         
     await prisma.loginAttempt.deleteMany({
         where: {

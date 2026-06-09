@@ -1,6 +1,6 @@
-import CreateProjectForm from "@/src/components/form/CreateProjectForm";
-import Header from "@/src/components/Header";
-import { prisma } from "@/src/lib/prisma";
+import CreateProjectForm from "@/components/form/CreateProjectForm";
+import Header from "@/components/Header";
+import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
 export default async function AdminProjectCreate() {

@@ -3,10 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { SessionData, sessionsOptions } from "@/lib/session";
 
 export async function proxy(request: NextRequest) {
-    console.log("middleware called", request.nextUrl.pathname);
-    const response = NextResponse.next();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const session = await getIronSession<SessionData>(request.cookies as any, sessionsOptions);
-    console.log("isLoggedIn", session.isLoggedIn);
 
     if (!session.isLoggedIn) {
         return NextResponse.redirect(new URL('/admin/login', request.url));

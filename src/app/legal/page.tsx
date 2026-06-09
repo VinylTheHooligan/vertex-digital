@@ -15,7 +15,7 @@ export default function Legal() {
                             Ce site est édité par William Salembien - Vertex Digital, micro-entreprise enregistrée en France. <br/><br/>
                             <b>SIRET :</b> 99354869200017 <br/>
                             <b>Ville :</b> Dunkerque <br/><br/>
-                            <i>L'adresse complète du siège peut être communiquée sur demande légitime afin de protéger la vie privée de l'éditeur.</i> <br/><br/>
+                            <i>L&apos;adresse complète du siège peut être communiquée sur demande légitime afin de protéger la vie privée de l&apos;éditeur.</i> <br/><br/>
                             <b>Email :</b> william.salembien@outlook.com <br/>
                             <b>Directeur de la publication :</b> William Salembien
                         </p>
@@ -31,18 +31,18 @@ export default function Legal() {
                     <section>
                         <h2 className="mb-3">3. Propriété intellectuelle</h2>
                         <p>
-                            L'ensemble du contenu du site (textes, images, code, éléments graphiques) est protégé par le droit d'auteur.
+                            L&apos;ensemble du contenu du site (textes, images, code, éléments graphiques) est protégé par le droit d&apos;auteur.
                             Toute reproduction, modification ou diffusion sans autorisation est interdite.
                         </p>
                     </section>
                     <section>
                         <h2 className="mb-3">4. Responsabilité</h2>
                         <p>
-                            L'éditeur ne saurait être tenu responsable en cas : <br/><br/>
+                            L&apos;éditeur ne saurait être tenu responsable en cas : <br/><br/>
                     
-                            - d'erreurs ponctuelles, <br/>
-                            - d'indisponibilité du site, <br/>
-                            - d'utilisation inappropriée du contenu par l'utilisateur. <br/>
+                            - d&apos;erreurs ponctuelles, <br/>
+                            - d&apos;indisponibilité du site, <br/>
+                            - d&apos;utilisation inappropriée du contenu par l&apos;utilisateur. <br/>
                         </p>
                     </section>
                     <section>

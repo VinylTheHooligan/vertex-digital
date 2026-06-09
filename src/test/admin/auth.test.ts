@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { login } from '@/src/app/actions/auth';
+import { login } from '@/actions/auth';
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
 import { getIronSession } from 'iron-session';
-import { prisma } from '@/src/lib/prisma';
+import { prisma } from '@/lib/prisma';
 
 describe('Server Action login', () => {
     beforeEach(() => {
@@ -37,9 +37,9 @@ describe('Server Action login', () => {
         const formData = new FormData();
         formData.append('username', 'testuser');
         formData.append('password', 'correctpassword');
-        
+
         await login(formData);
-        
+
         expect(vi.mocked(redirect)).toHaveBeenCalledWith('/admin');
     });
 

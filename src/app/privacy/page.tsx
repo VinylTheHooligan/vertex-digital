@@ -17,7 +17,7 @@ export default function Privacy() {
                             - <b>Adresse email </b>(fournie volontairement)<br/>
                             - <b>Adresse IP</b> (collectée automatiquement pour des raisons de sécurité)<br/><br/>
 
-                            Aucun autre type de donnée n'est collecté.
+                            Aucun autre type de donnée n&apos;est collecté.
                         </p>
                     </section>
                     <section>
@@ -28,7 +28,7 @@ export default function Privacy() {
                             - répondre aux messages envoyés via le formulaire<br/>
                             - assurer la sécurité du site (anti-spam, prévention des abus)<br/>
 
-                            Aucune donnée n'est utilisée à des fins commerciales ou publicitaires.
+                            Aucune donnée n&apos;est utilisée à des fins commerciales ou publicitaires.
                         </p>
                     </section>
                     <section>
@@ -36,8 +36,8 @@ export default function Privacy() {
                         <p>
                             La collecte repose sur :<br/><br/>
 
-                                - <b>l'intérêt légitime</b> (sécurisation du site)<br/>
-                                - <b>l'exécution d'un contrat</b> (réponse à une demande envoyée via le formulaire)<br/>
+                                - <b>l&apos;intérêt légitime</b> (sécurisation du site)<br/>
+                                - <b>l&apos;exécution d&apos;un contrat</b> (réponse à une demande envoyée via le formulaire)<br/>
                         </p>
                     </section>
                     <section>
@@ -48,7 +48,7 @@ export default function Privacy() {
                             - Emails : <b>12 mois maximum</b><br/>
                             - Adresse IP : <b>30 jours, sauf nécessité de sécurité prolongée</b><br/><br/>
 
-                            Aucune donnée n'est vendue, cédée ou transférée à des tiers.
+                            Aucune donnée n&apos;est vendue, cédée ou transférée à des tiers.
                         </p>
                     </section>
                     <section>
@@ -56,10 +56,10 @@ export default function Privacy() {
                         <p>
                             Les données sont accessibles uniquement à :<br/><br/>
 
-                            - l'<b>éditeur du site</b> (William Salembien)<br/>
-                            - l'hébergeur (OVH) en cas de nécessité technique ou judiciaire<br/><br/>
+                            - l&apos;<b>éditeur du site</b> (William Salembien)<br/>
+                            - l&apos;hébergeur (OVH) en cas de nécessité technique ou judiciaire<br/><br/>
 
-                            Aucune donnée n'est vendue, cédée ou transférée à des tiers.
+                            Aucune donnée n&apos;est vendue, cédée ou transférée à des tiers.
                         </p>
                     </section>
                     <section>
@@ -67,10 +67,10 @@ export default function Privacy() {
                         <p>
                             Conformément au RGPD, vous disposez des droits suivants :<br/><br/>
 
-                            - droit d'accès<br/>
+                            - droit d&apos;accès<br/>
                             - droit de rectification<br/>
-                            - droit d'effacement<br/>                      
-                            - droit d'opposition<br/>                         
+                            - droit d&apos;effacement<br/>                      
+                            - droit d&apos;opposition<br/>                         
                             - droit à la limitation du traitement<br/><br/>
                                 
                             Pour exercer vos droits : william.salembien@outlook.com
@@ -79,7 +79,7 @@ export default function Privacy() {
                     <section>
                         <h2 className="mb-3">7. Cookies</h2>
                         <p>
-                            Ce site <b>n'utilise aucun cookie nécessitant votre consentement</b>.<br/>
+                            Ce site <b>n&apos;utilise aucun cookie nécessitant votre consentement</b>.<br/>
                             Seuls des cookies techniques indispensables au fonctionnement du site peuvent être utilisés.
                         </p>
                     </section>

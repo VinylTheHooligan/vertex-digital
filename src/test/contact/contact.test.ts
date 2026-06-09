@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { handleSubmit } from '@/src/app/actions/contact';
-import { prisma } from '@/src/lib/prisma';
+import { handleSubmit } from '@/actions/contact';
+import { prisma } from '@/lib/prisma';
 
 describe('Server Action handleSubmit contact', () => {
     beforeEach(() => {

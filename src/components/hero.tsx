@@ -19,7 +19,9 @@ export default function Hero() {
         if (image) {
             animate(
                 image,
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 { opacity: [0, 1], filter: ["blur(8px)", "blur(0px)"] } as any,
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 { duration: 0.6, easing: "ease-out" } as any,
             )
         }
@@ -27,7 +29,9 @@ export default function Hero() {
         items.forEach((el, i) => {
             animate(
                 el,
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 { opacity: [0, 1], x: [40, 0] } as any,
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 { duration: 0.6, delay: i * 0.15, easing: "ease-out" } as any,
             );
         });
@@ -44,9 +48,9 @@ export default function Hero() {
                     />
                 </div>
                 <h1 ref={h1Ref} className="text-4xl font-bold text-center">William Salembien</h1>
-                <span ref={spanRef} className="text-xl font-semibold inline-block text-center"> Freelance  Full-stack (Symfony, Next.js, Tailwind)</span>
+                <span ref={spanRef} className="text-xl font-semibold inline-block text-center"> Freelance Full-stack (Symfony, Next.js, Tailwind)</span>
                 <p ref={pRef} className="text-lg text-center mt-3">
-                    Je conçois des applications web fiables, performante et respectant les bonnes pratiques du web. Je porte également mon attention sur l'architecture, à la qualité du code et à l'expérience utilisateur.
+                    Je conçois des applications web fiables, performante et respectant les bonnes pratiques du web. Je porte également mon attention sur l&apos;architecture, à la qualité du code et à l&apos;expérience utilisateur.
                 </p>
                 <div className="grid grid-cols-4 gap-3 w-full">
                     <a href="#project-section" className="col-span-2 form-button py-3 px-5">Mes projets</a>

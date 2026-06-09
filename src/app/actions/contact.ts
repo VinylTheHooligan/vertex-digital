@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { verifyTurnstile } from "@/lib/turnstile";
-import { headers } from "next/headers";
+import { getIp } from "@/lib/ip";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -27,7 +27,7 @@ export async function handleSubmit(formData: FormData) {
     const data = {
         email: formData.get("email"),
         subject: formData.get("subject"),
-        message: formData.get("message")
+        message: formData.get("message"),
     };
 
     const parsed = contactSchema.safeParse(data);
@@ -36,10 +36,7 @@ export async function handleSubmit(formData: FormData) {
         return { fieldErrors: parsed.error.flatten().fieldErrors };
     }
 
-    const headersList = await headers();
-    const ip = headersList.get('x-forwarded-for')?.split(',')[0].trim() 
-                ?? headersList.get('x-real-ip') 
-                ?? 'unknown';
+    const ip = await getIp();
 
     await prisma.contact.deleteMany({
         where: {

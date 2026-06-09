@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { deleteTechnology } from '@/src/app/actions/technology';
-import { deleteProject } from '@/src/app/actions/project';
-import { prisma } from '@/src/lib/prisma';
+import { deleteTechnology } from '@/actions/technology';
+import { deleteProject } from '@/actions/project';
+import { prisma } from '@/lib/prisma';
 import fs from 'fs/promises';
 import path from 'path';
 
