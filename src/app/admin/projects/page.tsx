@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
-import { deleteProject } from "@/actions/project";
+import { deleteProject } from "@/app/actions/project";
 
 export default async function AdminProject() {
 
