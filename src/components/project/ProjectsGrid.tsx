@@ -48,7 +48,7 @@ export default function ProjectsGrid({ projects }: { projects: Project[]}) {
             variants={container}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="grid grid-cols-1 gap-4"
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:mx-20 xl:grid-cols-4"
         >
             {projects.map(project => (
                 <motion.div key={project.id} variants={item}>
