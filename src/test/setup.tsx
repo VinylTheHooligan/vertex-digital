@@ -59,3 +59,7 @@ vi.mock('next/headers', () => ({
 vi.mock('next/navigation', () => ({
     redirect: vi.fn(),
 }));
+
+vi.mock('@/components/providers/ThemeProvider', () => ({
+    useTheme: () => ({ isDark: false, toggle: vi.fn() })
+}));

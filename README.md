@@ -7,9 +7,12 @@ Un portfolio moderne et performant construit avec les dernières technologies we
 ## ✨ Caractéristiques principales
 
 - **Design moderne** - Interface élégante avec Tailwind CSS et animations fluides (Motion)
+- **Mode sombre/jour** - Bascule de thème avec provider React et préférence conservée en localStorage
+- **Mobile-first** - UI pensée pour mobiles avec responsive design Tailwind en priorité
 - **Authentification sécurisée** - Système de login admin avec iron-session et bcrypt
 - **Formulaire de contact** - Validation complète avec Zod et protection CAPTCHA (Cloudflare Turnstile)
-- **Protection anti-spam** - Honeypot, limitation par IP et vérification Turnstile
+ - **Back office (CV)** - Possibilité d'uploader et gérer un CV (PDF) depuis l'espace admin, stocké et servi de façon sécurisée
+ - **Protection anti-spam** - Honeypot, limitation par IP et vérification Turnstile
 - **Optimisation d'images** - Conversion WebP automatique avec Sharp
 - **Base de données** - SQLite avec Prisma ORM pour gestion efficace
 - **Tests unitaires** - Suite de tests Vitest avec couverture complète
@@ -31,12 +34,14 @@ vertex-digital/
 │   │   │   ├── login/          # Page de connexion
 │   │   │   ├── projects/       # Gestion des projets (CRUD)
 │   │   │   ├── tech/           # Gestion des technologies
+│   │   │   ├── cv/             # Upload / gestion du CV (PDF)
 │   │   │   └── contacts/       # Consultation des messages
 │   │   ├── legal/              # Page mentions légales
 │   │   └── privacy/            # Politique de confidentialité
 │   ├── components/             # Composants React
 │   │   ├── form/               # Composants formulaires
-│   │   └── project/            # Composants affichage projets
+│   │   ├── project/            # Composants affichage projets
+│   │   └── providers/          # Provider React (thème sombre/jour)
 │   ├── lib/                    # Services et utilitaires
 │   │   ├── prisma.ts           # Configuration Prisma
 │   │   ├── session.ts          # Configuration iron-session
@@ -56,7 +61,7 @@ vertex-digital/
 ```
 ┌─────────────────┐
 │   Client Side   │
-│  (React 19.2)   │ → Components, Forms, Turnstile Widget
+│   (React 19.2)   │ → Components, Forms, Turnstile Widget, theme toggle
 └────────┬────────┘
          │
     Server Actions (Next.js)

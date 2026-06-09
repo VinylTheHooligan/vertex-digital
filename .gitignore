@@ -52,3 +52,6 @@ next-env.d.ts
 # images
 /public/images/technologies
 /public/images/projects
+
+# documents
+/public/documents

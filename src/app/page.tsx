@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main className="flex flex-col gap-20">
         <Hero />
         <Project />
         <About />

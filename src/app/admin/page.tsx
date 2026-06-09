@@ -22,6 +22,9 @@ export default function Admin() {
                         <Link href="/admin/bans" className="form-button text-center">
                             Bans
                         </Link>
+                        <Link href="/admin/cv" className="form-button text-center">
+                            CV
+                        </Link>
                     </div>
                 </div>
             </main>

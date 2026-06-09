@@ -8,6 +8,8 @@ Vertex Digital est une application **full-stack Next.js** avec une architecture 
 - **Prisma ORM** pour la gestion de données
 - **SQLite** pour la persistance
 - **TypeScript** pour la sécurité des types
+- **ThemeProvider Context** pour le basculement sombre/jour
+- **Mobile-first** avec Tailwind responsive pensés pour les écrans mobiles en priorité
 
 ---
 
@@ -27,6 +29,10 @@ Vertex Digital est une application **full-stack Next.js** avec une architecture 
 │  - Authentification (iron-session)        │
 │  - Sécurité (honeypot, rate-limit)       │
 │  - Gestion fichiers (Sharp)               │
+│  - Gestion des assets utilisateurs (CV)   │
+│    - Upload PDF via back-office
+│    - Validation MIME, taille et scans simples
+│    - Stockage sécurisé dans `public/cv` (ou stockage externe)
 └────────────────┬────────────────────────┘
                  │
 ┌────────────────▼────────────────────────┐
@@ -94,6 +100,8 @@ src/components/
 ├── Header.tsx               # En-tête/Navigation
 ├── Hero.tsx                 # Section héro
 ├── Project.tsx              # Composant serveur projets
+├── providers/
+│   └── ThemeProvider.tsx     # Provider de thème sombre/jour
 ├── form/
 │   ├── CreateProjectForm.tsx    # Formulaire création projet
 │   ├── EditProjectForm.tsx      # Formulaire édition projet
@@ -101,7 +109,7 @@ src/components/
 └── project/
     ├── ProjectCard.tsx      # Carte projet
     └── ProjectsGrid.tsx     # Grille de projets
-```
+```},{
 
 ### `src/lib/` - Services & Utilitaires
 

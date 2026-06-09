@@ -9,14 +9,15 @@ export async function saveSvg(
     folder: string, 
     filename: string
 ): Promise<string> {
-    const safe = slugify(filename, { lower: true, strict: true });
+    const safe = slugify(filename, { lower: true, strict: true, trim: true })
+    .replace(/\.\./g, '');
     const buffer = Buffer.from(await file.arrayBuffer());
     const outputDir = path.join(process.cwd(), 'public', 'images', folder);
 
     await fs.mkdir(outputDir, { recursive: true });
     await fs.writeFile(path.join(outputDir, `${safe}.svg`), buffer);
 
-    return `/images/${folder}/${filename}.svg`;
+    return `/images/${folder}/${safe}.svg`;
 }
 
 // for project images

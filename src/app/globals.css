@@ -71,7 +71,7 @@ html::before {
   background-color: var(--foreground);
   opacity: 0.1;
   mask-image: url('/images/bg.png');
-  mask-size: 90%;
+  mask-size: 50%;
   mask-position: center;
   mask-repeat: repeat;
   z-index: -1;

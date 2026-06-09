@@ -1,52 +1,49 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { deleteTechnology } from '@/actions/technology';
-import { deleteProject } from '@/actions/project';
-import { prisma } from '@/lib/prisma';
-import fs from 'fs/promises';
-import path from 'path';
+import { saveImage, saveSvg } from '@/lib/image';
+import { vi, describe, it, beforeEach, expect } from 'vitest';
+import sharp from 'sharp';
 
 vi.mock('fs/promises', () => ({
     default: {
+        writeFile: vi.fn().mockResolvedValue(undefined),
+        mkdir: vi.fn().mockResolvedValue(undefined),
         unlink: vi.fn().mockResolvedValue(undefined),
     }
 }));
 
-vi.mock('next/cache', () => ({
-    revalidatePath: vi.fn(),
+vi.mock('sharp', () => ({
+    default: vi.fn().mockReturnValue({
+        resize: vi.fn().mockReturnThis(),
+        webp: vi.fn().mockReturnThis(),
+        toFile: vi.fn().mockResolvedValue(undefined),
+    })
 }));
 
-describe('Suppression des fichiers', () => {
+describe('Sanitisation des noms de fichiers', () => {
     beforeEach(() => {
         vi.clearAllMocks();
     });
 
-    it('supprime le fichier SVG lors de la suppression d\'une technologie', async () => {
-        vi.mocked(prisma.technology.findUnique).mockResolvedValue({
-            id: 1,
-            name: 'Next.js',
-            logo: '/images/technologies/nextjs.svg',
-        } as never);
-        vi.mocked(prisma.technology.delete).mockResolvedValue({} as never);
-
-        await deleteTechnology(1);
-
-        expect(vi.mocked(fs.unlink)).toHaveBeenCalledWith(
-            path.join(process.cwd(), 'public', '/images/technologies/nextjs.svg')
-        );
+    it('slugifie un nom avec des espaces', async () => {
+        const file = new File([''], 'test.svg', { type: 'image/svg+xml' });
+        const result = await saveSvg(file, 'technologies', 'Mon Logo');
+        expect(result).toBe('/images/technologies/mon-logo.svg');
     });
 
-    it('supprime le fichier image lors de la suppression d\'un projet', async () => {
-        vi.mocked(prisma.project.findUnique).mockResolvedValue({
-            id: 1,
-            name: 'Projet Test',
-            image: '/images/projects/projet-test.webp',
-        } as never);
-        vi.mocked(prisma.project.delete).mockResolvedValue({} as never);
+    it('slugifie un nom avec des caractères spéciaux', async () => {
+        const file = new File([''], 'test.svg', { type: 'image/svg+xml' });
+        const result = await saveSvg(file, 'technologies', '../malicious');
+        expect(result).not.toContain('..');
+    });
 
-        await deleteProject(1);
+    it('slugifie un nom avec des accents', async () => {
+        const file = new File([''], 'test.svg', { type: 'image/svg+xml' });
+        const result = await saveSvg(file, 'technologies', 'editeur');
+        expect(result).toBe('/images/technologies/editeur.svg');
+    });
 
-        expect(vi.mocked(fs.unlink)).toHaveBeenCalledWith(
-            path.join(process.cwd(), 'public', '/images/projects/projet-test.webp')
-        );
+    it('slugifie un nom pour saveImage', async () => {
+        const file = new File([''], 'test.png', { type: 'image/png' });
+        const result = await saveImage(file, 'projects', 'Mon Projet', 1280, 720);
+        expect(result).toBe('/images/projects/mon-projet.webp');
     });
 });

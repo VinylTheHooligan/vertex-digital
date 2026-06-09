@@ -17,6 +17,8 @@ Le point d'entrée idéal. Contient :
 - 🧪 Information sur les tests
 - 📈 Performance
 - 📝 Licence et contact
+- 🌗 Thème sombre/jour via provider context
+- 📱 UI mobile-first responsive
 
 **À lire en premier !**
 

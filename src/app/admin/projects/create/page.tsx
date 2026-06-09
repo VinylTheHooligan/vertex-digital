@@ -12,10 +12,12 @@ export default async function AdminProjectCreate() {
     return (
         <>
             <Header />
-            <main className="flex flex-col justify-center mx-3">
-                <h2>Créer un projet</h2>
-                <CreateProjectForm technologies={technologies} />
-                <Link href="/admin/projects" className="form-button mt-5 px-5">Retourner à la liste</Link>
+            <main className="flex flex-col items-center mx-3">
+                <div className="grid grid-cols-1 gap-2 pt-10 sm:w-150">
+                    <h2>Créer un projet</h2>
+                    <CreateProjectForm technologies={technologies} />
+                    <Link href="/admin/projects" className="form-button mt-5 px-5">Retourner à la liste</Link>
+                </div>
             </main>
         </>
     );

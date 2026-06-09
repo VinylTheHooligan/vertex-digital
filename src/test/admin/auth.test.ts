@@ -10,13 +10,17 @@ describe('Server Action login', () => {
         vi.clearAllMocks();
         process.env.ADMIN_USERNAME = 'testuser';
         process.env.ADMIN_PASSWORD_HASH = '$2b$12$hashedpassword';
+        global.fetch = vi.fn().mockResolvedValue({
+            json: vi.fn().mockResolvedValue({ success: true })
+        });
     });
 
     it('retourne une erreur avec un username incorrect', async () => {
         vi.mocked(bcrypt.compare).mockResolvedValue(false as never);
         const formData = new FormData();
         formData.append('username', 'pasbon');
-        formData.append('password', 'enpngrspongsp14o');
+        formData.append('password', 'correctpassword');
+        formData.append('token', 'valid-token');
 
         const res = await login(formData);
         expect(res?.error).toBe("Identifiants incorrects. L'administrateur a été prévenu.");
@@ -26,7 +30,8 @@ describe('Server Action login', () => {
         vi.mocked(bcrypt.compare).mockResolvedValue(false as never);
         const formData = new FormData();
         formData.append('username', 'testuser');
-        formData.append('password', 'ag575a57ege');
+        formData.append('password', 'correctpassword');
+        formData.append('token', 'valid-token');
 
         const res = await login(formData);
         expect(res?.error).toBe("Identifiants incorrects. L'administrateur a été prévenu.");
@@ -37,6 +42,7 @@ describe('Server Action login', () => {
         const formData = new FormData();
         formData.append('username', 'testuser');
         formData.append('password', 'correctpassword');
+        formData.append('token', 'valid-token');
 
         await login(formData);
 
@@ -52,6 +58,7 @@ describe('Server Action login', () => {
         const formData = new FormData();
         formData.append('username', 'testuser');
         formData.append('password', 'correctpassword');
+        formData.append('token', 'valid-token');
 
         await login(formData);
         expect(mockSession.isLoggedIn).toBe(true);
@@ -64,6 +71,9 @@ describe('Rate limiting login', () => {
         vi.clearAllMocks();
         process.env.ADMIN_USERNAME = 'testuser';
         process.env.ADMIN_PASSWORD_HASH = '$2b$12$hashedpassword';
+        global.fetch = vi.fn().mockResolvedValue({
+            json: vi.fn().mockResolvedValue({ success: true })
+        });
     });
 
     it('bloque à la 6ème tentative', async () => {
@@ -73,6 +83,7 @@ describe('Rate limiting login', () => {
         const formData = new FormData();
         formData.append('username', 'wronguser');
         formData.append('password', 'wrongpassword');
+        formData.append('token', 'valid-token');
 
         const res = await login(formData);
         expect(res?.error).toBe("Identifiants incorrects. L'administrateur a été prévenu.");
@@ -83,8 +94,9 @@ describe('Rate limiting login', () => {
         vi.mocked(prisma.loginAttempt.count).mockResolvedValue(0);
 
         const formData = new FormData();
-        formData.append('username', 'wronguser');
+        formData.append('username', 'testuser');
         formData.append('password', 'wrongpassword');
+        formData.append('token', 'valid-token');
 
         await login(formData);
         expect(vi.mocked(prisma.loginAttempt.create)).toHaveBeenCalledWith({
@@ -97,8 +109,9 @@ describe('Rate limiting login', () => {
         vi.mocked(prisma.loginAttempt.count).mockResolvedValue(0);
 
         const formData = new FormData();
-        formData.append('username', 'wronguser');
+        formData.append('username', 'testuser');
         formData.append('password', 'wrongpassword');
+        formData.append('token', 'valid-token');
 
         await login(formData);
         expect(vi.mocked(prisma.loginAttempt.deleteMany)).toHaveBeenCalledWith({
@@ -114,8 +127,9 @@ describe('Rate limiting login', () => {
         vi.mocked(prisma.loginAttempt.count).mockResolvedValue(4);
 
         const formData = new FormData();
-        formData.append('username', 'wronguser');
+        formData.append('username', 'testuser');
         formData.append('password', 'wrongpassword');
+        formData.append('token', 'valid-token');
 
         const res = await login(formData);
         expect(res?.error).toBe("Identifiants incorrects. L'administrateur a été prévenu.");

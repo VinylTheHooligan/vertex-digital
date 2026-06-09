@@ -61,7 +61,8 @@ export default function Hero() {
                             <div className="grid grid-cols-2 gap-3 w-full">
                                 <a href="#project-section" className="form-button py-3 px-5">Mes projets</a>
                                 <a href="#contact-me" className="form-button py-3 px-5">Me contacter</a>
-                                <a href="#contact-me" className="col-span-2 form-button py-3 px-5">Mon CV</a>
+                                <a href="/documents/cv.pdf" className="col-span-2 form-button py-3 px-5"
+                                download>Mon CV</a>
                             </div>
                             <div className="grid grid-cols-2 gap-3 w-70">
                                 <a className="form-button py-3" href="https://www.linkedin.com/in/william-salembien/" target="_blank" rel="noopener noreferrer" >LinkedIn</a>

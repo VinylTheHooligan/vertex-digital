@@ -2,13 +2,19 @@
 
 import Link from "next/link";
 import { useTheme } from "@/components/providers/ThemeProvider";
+import { useEffect, useState } from "react";
 
 export default function Header() {
 
-    const { isDark, toggle } = useTheme();
+    const {isDark, toggle} = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     return (
-        <header className="grid grid-cols-3 grid-rows-1 backdrop-blur-xs backdrop-brightness-85 py-4 mb-10">
+        <header className="sticky top-0 z-50 grid grid-cols-3 grid-rows-1 backdrop-blur-xs backdrop-brightness-85 py-4 mb-10">
             <Link className="col-start-2 flex justify-center" href="/">
                 <svg className="w-20 md:w-20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1279.31 799.98">
                     <polygon points="876.29 222.63 674.87 539.23 629.89 609.92 576.11 694.46 508.97 799.98 390.01 613.01 510.94 422.94 638.38 222.63 876.29 222.63" />
@@ -17,15 +23,16 @@ export default function Header() {
                 </svg>
             </Link>
             <div className="flex items-center justify-end mx-5">
-                <div className="relative rounded-full duration-300 w-16 h-8 ring-2 ring-foreground">
-                    <label className="relative inline-flex cursor-pointer h-8 w-16 select-none">
-                        <input
-                          type="checkbox"
-                          className="sr-only"
-                          checked={isDark}
-                          onChange={toggle}
-                        />
-                        <div className={`absolute left-1 top-1 h-6 w-6 rounded-full     bg-foreground duration-300 flex items-center justify-center
+                {mounted && (
+                    <div className="relative rounded-full duration-300 w-16 h-8 ring-2 ring-foreground">
+                        <label className="relative inline-flex cursor-pointer h-8 w-16 select-none">
+                            <input
+                              type="checkbox"
+                              className="sr-only"
+                              checked={isDark}
+                              onChange={toggle}
+                            />
+                            <div className={`absolute left-1 top-1 h-6 w-6 rounded-full     bg-foreground duration-300 flex items-center justify-center
                             ${isDark ? "translate-x-8" : "translate-x-0"}`}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +40,7 @@ export default function Header() {
                                     className={`absolute w-4 h-4 text-background  transition-opacity duration-300 ${isDark ? "opacity-0" :    "opacity-100"}`}
                                     fill="currentColor"
                                 >
-                                <g>
+                                    <g>
                                     <circle fillRule="evenodd" clipRule="evenodd" cx="32.003" cy="32.005" r="16.001"/>
                                     <path fillRule="evenodd" clipRule="evenodd" d="M12.001,31.997c0-2.211-1.789-4-4-4H4c-2.211,0-4,1.789-4,4s1.789,4,4,4h4C10.212,35.997,12.001,34.208,12.001,31.997z"/>
                                     <path fillRule="evenodd" clipRule="evenodd" d="M12.204,46.139l-2.832,2.833c-1.563,1.562-1.563,4.094,0,5.656c1.562,1.562,4.094,1.562,5.657,0l2.833-2.832c1.562-1.562,1.562-4.095,0-5.657C16.298,44.576,13.767,44.576,12.204,46.139z"/>
@@ -43,14 +50,15 @@ export default function Header() {
                                     <path fillRule="evenodd" clipRule="evenodd" d="M51.798,17.859l2.828-2.829c1.574-1.566,1.562-4.094,0-5.657c-1.559-1.567-4.09-1.567-5.652-0.004l-2.829,2.836c-1.562,1.555-1.562,4.086,0,5.649C47.699,19.426,50.239,19.418,51.798,17.859z"/>
                                     <path fillRule="evenodd" clipRule="evenodd" d="M32.003,11.995c2.207,0.016,4-1.789,4-3.992v-4c0-2.219-1.789-4-4-4c-2.211-0.008-4,1.781-4,3.993l0.008,4.008C28.003,10.206,29.792,11.995,32.003,11.995z"/>
                                     <path fillRule="evenodd" clipRule="evenodd" d="M12.212,17.855c1.555,1.562,4.079,1.562,5.646-0.004c1.574-1.551,1.566-4.09,0.008-5.649l-2.829-2.828c-1.57-1.571-4.094-1.559-5.657,0c-1.575,1.559-1.575,4.09-0.012,5.653L12.212,17.855z"/>
-                                </g>
-                            </svg>
-                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className={`absolute w-4 h-4 text-background transition-opacity duration-300 ${isDark ? "opacity-100" : "opacity-0"}`}>
-                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="currentColor"/>
-                            </svg>
-                        </div>
-                    </label>
-                </div>
+                                    </g>
+                                </svg>
+                                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className={`absolute w-4 h-4 text-background transition-opacity duration-300 ${isDark ? "opacity-100" : "opacity-0"}`}>
+                                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                        </label>
+                    </div>
+                )}
             </div>
         </header>
     );
