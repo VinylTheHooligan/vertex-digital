@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { uploadCv } from "@/actions/cv";
-import Header from "@/src/components/Header";
+import { uploadCv } from "@/app/actions/cv";
+import Header from "@/components/Header";
 import FormField from "@/components/form/FormField";
 
 export default function AdminCv() {

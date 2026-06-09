@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
-import { deleteTechnology } from "@/actions/technology";
+import { deleteTechnology } from "@/app/actions/technology";
+import { Technology } from "@/generated/prisma/browser";
 
 export default async function AdminTech() {
 
@@ -19,7 +20,7 @@ export default async function AdminTech() {
                         <Link href="/admin/tech/create" className="form-button w-fit px-4">Créer</Link>
                     </div>
                     <div className="grid grid-cols-1 ring-2 rounded-sm">
-                        { technologies.map(tech => (
+                        { technologies.map((tech: Technology) => (
                             <div className="flex place-items-center gap-3 mx-4 my-4" key={tech.id}>
                                 <img className="w-10" style={{ filter: 'var(--logo-filter)' }} src={tech.logo} />
                                 <span className="font-bold">{tech.name}</span>

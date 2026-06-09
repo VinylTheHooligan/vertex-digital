@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { handleSubmit } from '@/actions/contact';
+import { handleSubmit } from '@/app/actions/contact';
 import { prisma } from '@/lib/prisma';
 
 describe('Server Action handleSubmit contact', () => {

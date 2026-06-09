@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { login } from "@/actions/auth";
+import { login } from "@/app/actions/auth";
 import Header from "@/components/Header";
 import FormFieldProps from "@/components/form/FormField";
 import { Turnstile } from "@marsidev/react-turnstile";

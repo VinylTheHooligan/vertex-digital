@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { uploadCv } from '@/actions/cv';
+import { uploadCv } from '@/app/actions/cv';
 
 vi.mock('fs/promises', () => ({
     default: {

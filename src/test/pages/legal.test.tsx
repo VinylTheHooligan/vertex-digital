@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import LegalPage from '@/src/app/legal/page';
-import PrivacyPage from '@/src/app/privacy/page';
+import LegalPage from '@/app/legal/page';
+import PrivacyPage from '@/app/privacy/page';
 
 describe('Pages légales', () => {
     it('affiche la page mentions légales', () => {

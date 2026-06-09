@@ -57,8 +57,9 @@ jobs:
           ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" <<'EOF'
             set -e
             cd "${{ secrets.SSH_PATH }}"
-            npm ci --omit=dev
+            npm ci
             npm run build
+            npm ci --omit=dev
             npx prisma migrate deploy
             sudo systemctl restart vertex-digital
           EOF

@@ -7,7 +7,7 @@ vi.mock('@marsidev/react-turnstile', () => ({
     )
 }))
 
-vi.mock('@/src/lib/prisma', () => ({
+vi.mock('@/lib/prisma', () => ({
     prisma: {
         loginAttempt: {
             deleteMany: vi.fn(),

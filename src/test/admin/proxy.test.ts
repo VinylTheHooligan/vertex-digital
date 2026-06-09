@@ -1,7 +1,7 @@
 console.log('proxy test loaded');
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { proxy } from '@/src/proxy';
+import { proxy } from '@/proxy';
 import { NextRequest } from 'next/server';
 import { getIronSession } from 'iron-session';
 

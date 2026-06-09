@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useTheme } from "@/components/providers/ThemeProvider";
-import { useEffect, useState } from "react";
 
 export default function Header() {
 

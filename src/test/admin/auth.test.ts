@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { login } from '@/actions/auth';
+import { login } from '@/app/actions/auth';
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
 import { getIronSession } from 'iron-session';

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import LoginPage from '@/src/app/admin/login/page';
+import LoginPage from '@/app/admin/login/page';
 
 describe('Page de login admin', () => {
     it('affiche le champ username', () => {

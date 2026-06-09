@@ -1,6 +1,6 @@
 "use client";
 
-import { updateProject } from "@/actions/project";
+import { updateProject } from "@/app/actions/project";
 import { useState } from "react";
 import FormField from "@/components/form/FormField";
 

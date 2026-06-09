@@ -20,13 +20,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@/src/*": ["./src/*"],
-      "@/lib/*": ["./src/lib/*"],
-      "@/actions/*": ["./src/app/actions/*"],
-      "@/public/*": ["./public/*"],
-      "@/components/*": ["./src/components/*"],
-    },
+      "@/*": ["./src/*"],
+      "@/generated/*": ["./generated/*"]
+    }
   },
   "include": [
     "next-env.d.ts",

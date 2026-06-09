@@ -1,7 +1,7 @@
 'use client'
 
 import { Turnstile } from '@marsidev/react-turnstile';
-import { handleSubmit } from "@/actions/contact";
+import { handleSubmit } from "@/app/actions/contact";
 import { useState } from "react";
 import FormField from '@/components/form/FormField';
 
