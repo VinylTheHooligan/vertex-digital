@@ -4,7 +4,7 @@ export const sessionsOptions: SessionOptions = {
     password: process.env.SESSION_SECRET!,
     cookieName: 'admin_session',
     cookieOptions: {
-        secure: process.env.NODE_ENV === 'production',
+        secure: false,
         httpOnly: true,
         sameSite: 'strict',
     }
