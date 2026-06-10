@@ -12,7 +12,7 @@ export async function proxy(request: NextRequest) {
     const session = await getIronSession<SessionData>(request.cookies as any, sessionsOptions);
 
     if (!session.isLoggedIn) {
-        return NextResponse.redirect(new URL('/admin/login', request.url));
+        return NextResponse.redirect(new URL('/admin/login', request.nextUrl.origin));
     }
 
     return NextResponse.next();
