@@ -10,7 +10,7 @@ export default async function Project() {
 
     return (
         <section id="project-section" className="flex flex-col gap-4 mx-3 my-20 pt-10">
-            <h2 className="mb-5">Projets</h2>
+            <h2 className="mb-5 mt-15">Projets</h2>
             <ProjectsGrid projects={projects} />
         </section>
     );

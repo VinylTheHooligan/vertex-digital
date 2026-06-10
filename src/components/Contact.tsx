@@ -31,14 +31,14 @@ export default function Contact() {
 
     return (
         <section id="contact-me" className="flex flex-col items-center">
-            <div className="grid grid-cols-1 gap-2 pt-10 sm:w-150">
+            <div className="grid grid-cols-1 mt-15 gap-2 pt-10 sm:w-150">
                 <h2>Me contacter</h2>
                 <span className="inline-block text-center">Ce formulaire est réservé aux sollicitations professionnelles.</span>
                 
                 <form className="form-style" action={action}>
                     <FormField label="Email" id="email" name="email" type="email" error={errors?.email} />
                     <FormField label="Sujet" id="subject" name="subject" type="text" error={errors?.subject} />
-                    <FormField label="Message" id="message" name="message" rows={6} error={errors?.message} />
+                    <FormField label="Message" id="message" name="message" rows={4} error={errors?.message} />
                     <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
                     <Turnstile
                         className="mt-3"

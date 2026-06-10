@@ -1,7 +1,7 @@
 export default function About() {
 
     return (
-        <section className="flex flex-col gap-10 text-lg text-center">
+        <section className="flex flex-col gap-10 mt-15 text-lg text-center">
             <h2>À propos</h2>
             <div className="flex flex-col gap-10 backdrop-blur-xs backdrop-brightness-80 px-5 py-10 md:px-15 xl:px-35">
                 <p>

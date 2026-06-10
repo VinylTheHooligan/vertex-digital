@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "William Salembien - Vertex Digital | Développeur Fullstack Freelance",
   description: "Développeur web freelance spécialisé en Symfony, Next.js et Tailwind. En recherche d'alternance CDA.",
   alternates: {
-    canonical: "https://vertex-digital.fr",
+    canonical: "https://www.vertex-digital.fr",
   },
   robots: {
     index: true,
