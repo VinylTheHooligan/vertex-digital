@@ -71,9 +71,9 @@ jobs:
             cd "${{ secrets.SSH_PATH }}"
             npm ci
             npx prisma generate
-            npm run build 
             touch dev.db
-            npx prisma migrate deploy 
+            npx prisma migrate deploy
+            npm run build 
             sudo systemctl restart vertex-digital
           EOF
         shell: bash
