@@ -3,6 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { SessionData, sessionsOptions } from "@/lib/session";
 
 export async function proxy(request: NextRequest) {
+
+    if (request.nextUrl.pathname === '/admin/login') {
+        return NextResponse.next();
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const session = await getIronSession<SessionData>(request.cookies as any, sessionsOptions);
 
@@ -14,5 +19,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-    matcher: '/admin/((?!login).)*'
+    matcher: ['/admin/:path*'],
 };
