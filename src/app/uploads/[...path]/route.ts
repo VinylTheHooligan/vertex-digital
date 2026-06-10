@@ -3,13 +3,9 @@ import fs from "fs";
 import path from "path";
 import { UPLOAD_BASE_PATH } from "@/lib/paths";
 
-type ParamsType = {
-  path: string[];
-}
-
 export async function GET(
   _req: Request,
-  context: { params: ParamsType }
+  context: { params: { path: string[] } }
 ) {
     const { params } = context;
     const filePath = path.join(UPLOAD_BASE_PATH, ...params.path);
