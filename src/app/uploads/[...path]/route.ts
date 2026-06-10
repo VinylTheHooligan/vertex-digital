@@ -5,15 +5,15 @@ import { UPLOAD_BASE_PATH } from "@/lib/paths";
 
 export async function GET(
   _req: Request,
-  context: { params: { [key: string]: string[] } }
+  context: { params: Promise<{ path: string[] }> }
 ) {
-    const { params } = context;
-    const filePath = path.join(UPLOAD_BASE_PATH, ...params.path);
+    const { path: filePath } = await context.params;
+    const fullPath = path.join(UPLOAD_BASE_PATH, ...filePath);
 
-    if (!fs.existsSync(filePath)) {
+    if (!fs.existsSync(fullPath)) {
       return new NextResponse("Not found", { status: 404 });
     }
 
-    const file = fs.readFileSync(filePath);
+    const file = fs.readFileSync(fullPath);
     return new NextResponse(file);
 }
