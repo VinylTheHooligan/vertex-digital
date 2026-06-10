@@ -5,7 +5,7 @@ import { UPLOAD_BASE_PATH } from "@/lib/paths";
 
 export async function GET(
   _req: Request,
-  context: Record<string, any>
+  context: { params: { [key: string]: string[] } }
 ) {
     const { params } = context;
     const filePath = path.join(UPLOAD_BASE_PATH, ...params.path);
