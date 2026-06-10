@@ -3,6 +3,7 @@
 import { animate } from 'motion';
 import Image from 'next/image';
 import williamMobile from '@/public/images/william-mobile.webp';
+import william from '@/public/images/william.webp';
 import { useEffect, useRef } from 'react';
 
 export default function Hero() {
@@ -42,9 +43,16 @@ export default function Hero() {
         <section className="flex flex-col items-center mx-3 md:mx-10 md:mt-5 lg:mt-10">
             <div className="grid grid-cols-1 gap-3 items-center md:w-full">
                 <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-3 md:flex-row md:gap-10 xl:grid-cols-8">
-                    <div className="flex justify-center xl:col-start-2 xl:col-span-2" ref={imageRef}>
+                    <div className="flex justify-center xl:hidden" ref={imageRef}>
                         <Image
                             src={williamMobile}
+                            alt="Photo de William Salembien version mobile"
+                            className="mb-3 rounded-xl shadow-2xl shadow-foreground/15 ring-4 ring-foreground w-35 md:w-70 lg:w-90 "
+                        />
+                    </div>
+                    <div className="hidden xl:flex justify-center xl:col-start-2 xl:col-span-2" ref={imageRef}>
+                        <Image
+                            src={william}
                             alt="Photo de William Salembien"
                             className="mb-3 rounded-xl shadow-2xl shadow-foreground/15 ring-4 ring-foreground w-35 md:w-70 lg:w-90 "
                         />
