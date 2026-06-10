@@ -5,6 +5,7 @@ import { SessionData, sessionsOptions } from "@/lib/session";
 export async function proxy(request: NextRequest) {
 
     if (request.nextUrl.pathname === '/admin/login') {
+        console.log('returning next for login');
         return NextResponse.next();
     }
 
