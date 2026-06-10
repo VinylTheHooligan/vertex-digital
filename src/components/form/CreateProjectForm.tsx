@@ -36,8 +36,8 @@ export default function CreateProjectForm({ technologies }: { technologies: Tech
             <FormField label="Image" id="image" name="image" type="file" accept="image/*" />
             <FormField label="Date de début" id="startedAt" name="startedAt" type="date" error={errors?.startedAt}/>
             <FormField label="Date de fin" id="endedAt" name="endedAt" type="date" error={errors?.endedAt}/>
-            <FormField label="Github" id="github" name="github" type="url"/>
-            <FormField label="Site web" id="web" name="web" type="url"/>
+            <FormField label="Github" id="github" name="github" type="url" required={false}/>
+            <FormField label="Site web" id="web" name="web" type="url"required={false}/>
 
             <div className="flex flex-col gap-2">
                 <label className="font-bold">Technologies :</label>

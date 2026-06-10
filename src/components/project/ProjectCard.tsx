@@ -27,10 +27,10 @@ export default function ProjectCard({
 }: ProjectCardProps) {
 
     return (
-        <div className="flex flex-col rounded-xl border border-foreground/30 overflow-hidden bg-foreground/5">
+        <div className="h-full flex flex-col rounded-xl border border-foreground/30 overflow-hidden bg-foreground/5">
             <img src={image} alt={name} className="w-full h-44 object-cover" />
-            <div className="flex flex-col p-4 gap-3">
-                <div className="flex flex-col gap-2">
+            <div className="flex flex-col p-4 gap-3 flex-1">
+                <div className="flex flex-col gap-2 flex-1 place-content-between">
                     <div className="flex items-baseline justify-between">
                         <span className="text-xl font-semibold">{name}</span>
                         <span className="text-xs text-foreground/70">
