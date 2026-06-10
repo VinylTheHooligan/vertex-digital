@@ -41,7 +41,16 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
         shell: bash
-
+      - name: Create .env
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" "cat > ${{ secrets.SSH_PATH }}/.env << 'ENVEOF'
+          DATABASE_URL=${{ secrets.DATABASE_URL }}
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY=${{ secrets.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
+          TURNSTILE_SECRET_KEY=${{ secrets.TURNSTILE_SECRET_KEY }}
+          ADMIN_USERNAME=${{ secrets.ADMIN_USERNAME }}
+          ADMIN_PASSWORD_HASH=${{ secrets.ADMIN_PASSWORD_HASH }}
+          SESSION_SECRET=${{ secrets.SESSION_SECRET }}
+          ENVEOF"
       - name: Sync project to server
         run: |
           rsync -avz --delete \
@@ -60,6 +69,7 @@ jobs:
             npm ci
             npx prisma generate
             npm run build 
+            touch dev.db
             npx prisma migrate deploy 
             sudo systemctl restart vertex-digital
           EOF
