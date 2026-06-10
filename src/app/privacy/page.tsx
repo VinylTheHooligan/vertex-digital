@@ -7,8 +7,8 @@ export default function Privacy() {
         <>
             <Header />
             <main className="flex flex-col gap-10 mx-3 mb-10">
-                <h1>Politique de confidentialité</h1>
-                <div className="flex flex-col gap-15">
+                <h1 className="text-4xl text-center">Politique de confidentialité</h1>
+                <div className="flex flex-col gap-15 sm:mx-10 md:mx-20 lg:mx-40 xl:mx-100">
                     <section>
                         <h2 className="mb-3">1. Données collectées</h2>
                         <p>
@@ -57,7 +57,7 @@ export default function Privacy() {
                             Les données sont accessibles uniquement à :<br/><br/>
 
                             - l&apos;<b>éditeur du site</b> (William Salembien)<br/>
-                            - l&apos;hébergeur (OVH) en cas de nécessité technique ou judiciaire<br/><br/>
+                            - l&apos;hébergeur (Hetzner) en cas de nécessité technique ou judiciaire<br/><br/>
 
                             Aucune donnée n&apos;est vendue, cédée ou transférée à des tiers.
                         </p>

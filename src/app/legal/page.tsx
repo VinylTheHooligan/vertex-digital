@@ -7,8 +7,8 @@ export default function Legal() {
         <>
             <Header />
             <main className="flex flex-col gap-10 mx-3 mb-10">
-                <h1>Mentions légales</h1>
-                <div className="flex flex-col gap-15">
+                <h1 className="text-4xl text-center">Mentions légales</h1>
+                <div className="flex flex-col gap-15 sm:mx-10 md:mx-20 lg:mx-40 xl:mx-100">
                     <section>
                         <h2 className="mb-3">1. Éditeur du site</h2>
                         <p>
@@ -24,8 +24,10 @@ export default function Legal() {
                         <h2 className="mb-3">2. Hébergement</h2>
                         <p>
                             Le site est hébergé par : <br/>
-                            OVH SAS <br/>
-                            2 rue Kellermann - 59100 Roubaix - France <br/>
+                            Hetzner Online GmbH <br/>
+                            Industriestr. 25 <br/>
+                            91710 Gunzenhausen <br/>
+                            Germany
                         </p>
                     </section>
                     <section>
