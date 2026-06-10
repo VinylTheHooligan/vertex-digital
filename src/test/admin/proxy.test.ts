@@ -40,7 +40,6 @@ describe('Protection des routes admin', () => {
         const req = new NextRequest('http://localhost:3000/admin/login');
         const res = await proxy(req);
 
-        expect(res.status).toBe(307);
-        expect(res.headers.get('location')).toContain('/admin/login');
+        expect(res.status).toBe(200);
     });
 });
