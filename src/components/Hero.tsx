@@ -47,14 +47,18 @@ export default function Hero() {
                         <Image
                             src={williamMobile}
                             alt="Photo de William Salembien version mobile"
-                            className="mb-3 rounded-xl shadow-2xl shadow-foreground/15 ring-4 ring-foreground w-35 md:w-70 lg:w-90 "
+                            className="mb-3 rounded-xl shadow-2xl shadow-foreground/15 ring-4 ring-foreground w-35 md:w-70 lg:w-90"
+                            fetchPriority="high"
+                            loading="lazy"
                         />
                     </div>
                     <div className="hidden xl:flex justify-center xl:col-start-2 xl:col-span-2" ref={imageRef}>
                         <Image
                             src={william}
                             alt="Photo de William Salembien"
-                            className="mb-3 rounded-xl shadow-2xl shadow-foreground/15 ring-4 ring-foreground w-35 md:w-70 lg:w-90 "
+                            className="mb-3 rounded-xl shadow-2xl shadow-foreground/15 ring-4 ring-foreground w-35 md:w-70 lg:w-90"
+                            fetchPriority="high"
+                            loading="lazy"
                         />
                     </div>
                     <div className="col-span-2 flex flex-col items-center md:items-start xl:col-span-4">
