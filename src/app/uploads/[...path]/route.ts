@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import { UPLOAD_BASE_PATH } from "@/lib/paths";
+import mime from 'mime-types';
 
 export async function GET(
   _req: Request,
@@ -14,6 +15,11 @@ export async function GET(
       return new NextResponse("Not found", { status: 404 });
     }
 
+    const contentType = mime.lookup(fullPath) || 'application/octet-stream';
     const file = fs.readFileSync(fullPath);
-    return new NextResponse(file);
+    return new NextResponse(file, {
+        headers: {
+            'Content-Type': contentType,
+        }
+    });
 }
