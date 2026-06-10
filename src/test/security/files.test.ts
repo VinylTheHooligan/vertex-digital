@@ -26,7 +26,7 @@ describe('Sanitisation des noms de fichiers', () => {
     it('slugifie un nom avec des espaces', async () => {
         const file = new File([''], 'test.svg', { type: 'image/svg+xml' });
         const result = await saveSvg(file, 'technologies', 'Mon Logo');
-        expect(result).toBe('/images/technologies/mon-logo.svg');
+        expect(result).toBe('/uploads/technologies/mon-logo.svg');
     });
 
     it('slugifie un nom avec des caractères spéciaux', async () => {
@@ -38,12 +38,12 @@ describe('Sanitisation des noms de fichiers', () => {
     it('slugifie un nom avec des accents', async () => {
         const file = new File([''], 'test.svg', { type: 'image/svg+xml' });
         const result = await saveSvg(file, 'technologies', 'editeur');
-        expect(result).toBe('/images/technologies/editeur.svg');
+        expect(result).toBe('/uploads/technologies/editeur.svg');
     });
 
     it('slugifie un nom pour saveImage', async () => {
         const file = new File([''], 'test.png', { type: 'image/png' });
         const result = await saveImage(file, 'projects', 'Mon Projet', 1280, 720);
-        expect(result).toBe('/images/projects/mon-projet.webp');
+        expect(result).toBe('/uploads/projects/mon-projet.webp');
     });
 });
