@@ -46,8 +46,10 @@ export async function login(formData: FormData) {
         return { error: "Identifiants incorrects. L'administrateur a été prévenu." };
     }
 
+    const base64ToHash = Buffer.from(process.env.ADMIN_PASSWORD_HASH!, 'base64').toString('utf-8');
+
     const validUsername = userData.username === process.env.ADMIN_USERNAME;
-    const validPassword = await bcrypt.compare(userData.password, process.env.ADMIN_PASSWORD_HASH!);
+    const validPassword = await bcrypt.compare(userData.password, base64ToHash);
 
     if (!validUsername || !validPassword) {
         await prisma.loginAttempt.create({ data: { ip }});

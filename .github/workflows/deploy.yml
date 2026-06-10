@@ -46,7 +46,7 @@ jobs:
             ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" "mkdir -p ${{ secrets.SSH_PATH }}"
       - name: Create .env
         run: |
-          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" "cat > ${{ secrets.SSH_PATH }}/.env << 'ENVEOF'
+          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" "cat > ${{ secrets.SSH_PATH }}/.env.local << 'ENVEOF'
           DATABASE_URL=${{ secrets.DATABASE_URL }}
           NEXT_PUBLIC_TURNSTILE_SITE_KEY=${{ secrets.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
           TURNSTILE_SECRET_KEY=${{ secrets.TURNSTILE_SECRET_KEY }}
