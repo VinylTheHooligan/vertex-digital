@@ -1,8 +1,11 @@
 "use client";
 
-import { updateProject } from "@/app/actions/project";
-import { useState } from "react";
+import { ProjectFieldErrors, updateProject } from "@/app/actions/project";
+import { useReducer, useState } from "react";
 import FormField from "@/components/form/FormField";
+import { formReducer, FormState } from "@/types/forms";
+
+type ProjectWithTechnologies = Project & { technologies: Technology[] }
 
 type Technology = {
     id: number,
@@ -21,35 +24,40 @@ type Project = {
     technologies: Technology[];
 }
 
-type FieldErrors = {
-    name?: string[];
-    description?: string[],
-    startedAt?: string[],
-    endedAt?: string[],
-}
+const initialState: FormState<ProjectFieldErrors> = { status: 'idle' };
 
 export default function EditProjectForm({ project, technologies }: { project: Project, technologies: Technology[] }) {
-    const [errors, setErrors] = useState<FieldErrors | null>(null);
-    const [serverError, setServerError] = useState<string | null>(null);
-    const [success, setSuccess] = useState(false);
+    const [state, dispatch] = useReducer(formReducer<ProjectFieldErrors>, initialState);
 
     async function action(formData: FormData) {
+        if (state.status === 'submitting') return;
+        dispatch({ type: 'SUBMIT' });
+
         const res = await updateProject(project.id, formData);
 
-        if (res?.fieldErrors) setErrors(res.fieldErrors);
-        if (res?.serverError) setServerError(res.serverError);
-        if (res?.success) setSuccess(true);
+        if (res?.success) dispatch({ type: 'SUCCESS' });
+        else dispatch({ type: 'ERROR', fieldErrors: res?.fieldErrors, serverError: res?.serverError });
     }
 
     return (
         <form action={action} className="form-style">
-            <FormField label="Nom" id="name" name="name" error={errors?.name} defaultValue={project.name}/>
-            <FormField label="Description" id="description" name="description" rows={3} error={errors?.description} defaultValue={project.description}/>
+            <FormField label="Nom" id="name" name="name"
+                error={state.status === 'error' ? state.fieldErrors?.name : undefined}
+                defaultValue={project.name}/>
+            <FormField label="Description" id="description" name="description" rows={3} 
+                error={state.status === 'error' ? state.fieldErrors?.description : undefined}
+                defaultValue={project.description}/>
             <FormField label="Image" id="image" name="image" type="file" accept="image/*" required={false}/>
-            <FormField label="Date de début" id="startedAt" name="startedAt" type="date" error={errors?.startedAt} defaultValue={project.startedAt.toISOString().split('T')[0]}/>
-            <FormField label="Date de fin" id="endedAt" name="endedAt" type="date" error={errors?.endedAt} defaultValue={project.endedAt?.toISOString().split('T')[0]} required={false}/>
-            <FormField label="Github" id="github" name="github" type="url" defaultValue={project.github ?? ''} required={false}/>
-            <FormField label="Site web" id="web" name="web" type="url" defaultValue={project.web ?? ''} required={false}/>
+            <FormField label="Date de début" id="startedAt" name="startedAt" type="date" 
+                error={state.status === 'error' ? state.fieldErrors?.startedAt : undefined}
+                defaultValue={project.startedAt.toISOString().split('T')[0]}/>
+            <FormField label="Date de fin" id="endedAt" name="endedAt" type="date" 
+                error={state.status === 'error' ? state.fieldErrors?.endedAt : undefined} 
+                defaultValue={project.endedAt?.toISOString().split('T')[0]} required={false}/>
+            <FormField label="Github" id="github" name="github" type="url" 
+                defaultValue={project.github ?? ''} required={false}/>
+            <FormField label="Site web" id="web" name="web" type="url" 
+                defaultValue={project.web ?? ''} required={false}/>
 
             <div className="flex flex-col gap-2">
                 <label className="font-bold">Technologies :</label>
@@ -63,10 +71,14 @@ export default function EditProjectForm({ project, technologies }: { project: Pr
                 </div>
             </div>
 
-            {serverError && <span className="text-red-800">{serverError}</span>}
-            {success && <span className="font-bold">Le projet à bien été modifié !</span>}
+            {state.status === 'error' && state.serverError &&
+                <span className="text-red-800">{state.serverError}</span>}
+            {state.status === 'success' &&
+                <span className="font-bold">Le projet a bien été modifié !</span>}
 
-            <button type="submit" className="form-button">Modifier</button>
+            <button type="submit" className="form-button" disabled={state.status === 'submitting'}>
+                {state.status === 'submitting' ? 'Modification...' : 'Modifier'}
+            </button>
         </form>
     );
 }

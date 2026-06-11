@@ -1,6 +1,10 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import LoginPage from '@/app/admin/login/page';
+
+vi.mock('@marsidev/react-turnstile', () => ({
+    Turnstile: () => null,
+}));
 
 describe('Page de login admin', () => {
     it('affiche le champ username', () => {
@@ -14,7 +18,7 @@ describe('Page de login admin', () => {
     });
 
     it('le bouton connexion est désactivé sans le token Turnstile', () => {
-        render(<LoginPage />);
-        expect(screen.getByRole('button', { name: /connexion/i })).toBeDisabled();
+        render(<LoginPage />)
+        expect(screen.getByRole('button', { name: /se connecter/i })).toBeDisabled();
     });
 });

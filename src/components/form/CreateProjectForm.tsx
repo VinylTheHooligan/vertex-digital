@@ -1,41 +1,52 @@
 "use client";
 
 import { createProject } from "@/app/actions/project";
-import { useState } from "react";
+import { useReducer, useRef } from "react";
 import FormField from "@/components/form/FormField";
+
+import type { ProjectFieldErrors } from "@/app/actions/project";
+import { formReducer, FormState } from "@/types/forms";
 
 type Technology = {
     id: number,
     name: string,
 }
 
-type FieldErrors = {
-    name?: string[];
-    description?: string[],
-    startedAt?: string[],
-    endedAt?: string[],
-}
+const initialState: FormState<ProjectFieldErrors> = { status: 'idle' };
 
 export default function CreateProjectForm({ technologies }: { technologies: Technology[] }) {
-    const [errors, setErrors] = useState<FieldErrors | null>(null);
-    const [serverError, setServerError] = useState<string | null>(null);
-    const [success, setSuccess] = useState(false);
+    const [state, dispatch] = useReducer(formReducer<ProjectFieldErrors>, initialState);
+    const formRef = useRef<HTMLFormElement>(null);
 
     async function action(formData: FormData) {
+        if (state.status === 'submitting') return;
+        dispatch({ type: 'SUBMIT' });
+
         const res = await createProject(formData);
 
-        if (res?.fieldErrors) setErrors(res.fieldErrors);
-        if (res?.serverError) setServerError(res.serverError);
-        if (res?.success) setSuccess(true);
+        if (res?.success) {
+            dispatch({ type: 'SUCCESS' });
+            formRef.current?.reset();
+        } else {
+            dispatch({ 
+                type: 'ERROR', 
+                fieldErrors: res?.fieldErrors, 
+                serverError: res?.serverError 
+            });
+        }
     }
 
     return (
-        <form action={action} className="form-style">
-            <FormField label="Nom" id="name" name="name" error={errors?.name}/>
-            <FormField label="Description" id="description" name="description" rows={3} error={errors?.description}/>
+        <form ref={formRef} action={action} className="form-style">
+            <FormField label="Nom" id="name" name="name" 
+                error={state.status === 'error' ? state.fieldErrors?.name : undefined}/>
+            <FormField label="Description" id="description" name="description" rows={3} 
+                error={state.status === 'error' ? state.fieldErrors?.description : undefined}/>
             <FormField label="Image" id="image" name="image" type="file" accept="image/*" />
-            <FormField label="Date de début" id="startedAt" name="startedAt" type="date" error={errors?.startedAt}/>
-            <FormField label="Date de fin" id="endedAt" name="endedAt" type="date" error={errors?.endedAt}/>
+            <FormField label="Date de début" id="startedAt" name="startedAt" type="date" 
+                error={state.status === 'error' ? state.fieldErrors?.startedAt : undefined}/>
+            <FormField label="Date de fin" id="endedAt" name="endedAt" type="date" 
+                error={state.status === 'error' ? state.fieldErrors?.endedAt : undefined}/>
             <FormField label="Github" id="github" name="github" type="url" required={false}/>
             <FormField label="Site web" id="web" name="web" type="url"required={false}/>
 
@@ -51,10 +62,14 @@ export default function CreateProjectForm({ technologies }: { technologies: Tech
                 </div>
             </div>
 
-            {serverError && <span className="text-red-800">{serverError}</span>}
-            {success && <span className="font-bold">Le projet à bien été créer !</span>}
+            {state.status === 'error' && state.serverError &&
+                <span className="text-red-800">{state.serverError}</span>}
+            {state.status === 'success' &&
+                <span className="font-bold">Le projet a bien été créé !</span>}
 
-            <button type="submit" className="form-button">Créer</button>
+            <button type="submit" className="form-button" disabled={state.status === 'submitting'}>
+                {state.status === 'submitting' ? 'Création...' : 'Créer'}
+            </button>
         </form>
     );
 }

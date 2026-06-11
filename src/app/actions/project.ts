@@ -41,6 +41,13 @@ const projectSchema = z.object({
         .or(z.literal('')),
 });
 
+export type ProjectFieldErrors = {
+    name?: string[];
+    description?: string[];
+    startedAt?: string[];
+    endedAt?: string[];
+}
+
 export async function createProject(formData: FormData) {
     const parsed = projectSchema.safeParse({
         name: formData.get('name'),

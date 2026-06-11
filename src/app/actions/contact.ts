@@ -11,6 +11,11 @@ const contactSchema = z.object({
     message: z.string().min(5, { message: "Message trop court" }).max(500, { message: "Message trop long" })
 });
 
+export type ContactFieldErrors = {
+    email?: string[];
+    subject?: string[];
+    message?: string[];
+}
 
 export async function handleSubmit(formData: FormData) {
     // honeypot
