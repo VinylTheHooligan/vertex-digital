@@ -12,7 +12,7 @@ export default function Legal() {
                     <section>
                         <h2 className="mb-3">1. Éditeur du site</h2>
                         <p>
-                            Ce site est édité par William Salembien - Vertex Digital, micro-entreprise enregistrée en France. <br/><br/>
+                            Ce site est édité par <strong>William Salembien</strong> de <strong>Vertex Digital</strong>, micro-entreprise enregistrée en France. <br/><br/>
                             <b>SIRET :</b> 99354869200017 <br/>
                             <b>Ville :</b> Dunkerque <br/><br/>
                             <i>L&apos;adresse complète du siège peut être communiquée sur demande légitime afin de protéger la vie privée de l&apos;éditeur.</i> <br/><br/>
@@ -50,7 +50,7 @@ export default function Legal() {
                     <section>
                         <h2 className="mb-3">5. Contact</h2>
                         <p>
-                            Pour toute question : william.salembien@outlook.com
+                            Pour toute question : contact@vertex-digital.fr
                         </p>
                     </section>
                 </div>
