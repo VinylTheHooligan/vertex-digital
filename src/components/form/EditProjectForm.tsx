@@ -1,11 +1,9 @@
 "use client";
 
 import { ProjectFieldErrors, updateProject } from "@/app/actions/project";
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import FormField from "@/components/form/FormField";
 import { formReducer, FormState } from "@/types/forms";
-
-type ProjectWithTechnologies = Project & { technologies: Technology[] }
 
 type Technology = {
     id: number,

@@ -3,19 +3,14 @@
 import { login } from "@/app/actions/auth";
 import FormField from "@/components/form/FormField";
 import { Turnstile, TurnstileInstance } from "@marsidev/react-turnstile";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export default function LoginForm() {
 
     const [errors, setErrors] = useState<string | null>(null);
     const [token, setToken] = useState<string | null>(null);
     const [submitting, setSubmitting] = useState(false);
-    const [mounted, setMounted] = useState(false);
     const turnstileRef = useRef<TurnstileInstance>(null);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     async function action(formData: FormData) {
         if (!token || submitting) return;
@@ -35,17 +30,14 @@ export default function LoginForm() {
             <FormField label="Utilisateur" id="username" name="username" type="text" />
             <FormField label="Mot de passe" id="password" name="password" type="password" />
             {errors && <span className="text-red-800">{errors}</span>}
-
-            {mounted && (
-                <Turnstile
-                    ref={turnstileRef}
-                    className="mt-3"
-                    siteKey={process.env.NODE_ENV === 'development'
-                        ? '1x00000000000000000000AA'
-                        : process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                    onSuccess={(token) => setToken(token)}
-                />
-            )}
+            <Turnstile
+                ref={turnstileRef}
+                className="mt-3"
+                siteKey={process.env.NODE_ENV === 'development'
+                    ? '1x00000000000000000000AB'
+                    : process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                onSuccess={(token) => setToken(token)}
+            />
             <button type="submit" className="form-button" disabled={!token || submitting}>
                 {submitting ? 'Connexion...' : 'Se connecter'}
             </button>

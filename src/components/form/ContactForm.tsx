@@ -2,7 +2,7 @@
 
 import { Turnstile, TurnstileInstance } from '@marsidev/react-turnstile';
 import { handleSubmit } from "@/app/actions/contact";
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useReducer, useRef, useState } from "react";
 import FormField from '@/components/form/FormField';
 
 import type { ContactFieldErrors } from "@/app/actions/contact";
@@ -13,12 +13,7 @@ const initialState: FormState<ContactFieldErrors> = { status: 'idle' };
 export default function ContactForm() {
     const [state, dispatch] = useReducer(formReducer<ContactFieldErrors>, initialState);
     const [token, setToken] = useState<string | null>(null);
-    const [mounted, setMounted] = useState(false);
     const turnstileRef = useRef<TurnstileInstance>(null);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     async function action(formData: FormData) {
         if (!token || state.status === 'submitting') return;
@@ -46,17 +41,14 @@ export default function ContactForm() {
             <FormField label="Message" id="message" name="message" rows={4} 
                 error={state.status === 'error' ? state.fieldErrors?.message : undefined} />
             <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
-            {mounted && (
-                <Turnstile
-                    key="contact-turnstile"
-                    ref={turnstileRef}
-                    className="mt-3"
-                    siteKey={process.env.NODE_ENV === 'development'
-                        ? '1x00000000000000000000AA'
-                        : process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                    onSuccess={(token) => setToken(token)}
-                />
-            )}
+            <Turnstile
+                ref={turnstileRef}
+                className="mt-3"
+                siteKey={process.env.NODE_ENV === 'development'
+                    ? '1x00000000000000000000AA'
+                    : process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                onSuccess={(token) => setToken(token)}
+            />
             {state.status === 'error' && state.serverError &&
                 <span className="text-red-800">{state.serverError}</span>}
             {state.status === 'success' &&
