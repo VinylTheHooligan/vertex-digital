@@ -10,24 +10,33 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-    const [isDark, setIsDark] = useState<boolean>(() => {
-        if (typeof window === "undefined") return false;
+    const [isDark, setIsDark] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
         const stored = localStorage.getItem('theme');
-        if (stored) return stored === "dark";
-        return window.matchMedia("(prefers-color-schema: dark)").matches;
-    });
+        const dark = stored
+            ? stored === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            setIsDark(dark);
+            setMounted(true);
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const toggle = () => {
         setIsDark(prev => {
             const next = !prev;
             localStorage.setItem('theme', next ? 'dark' : 'light');
             return next;
-        });
-    };
+        })
+    }
 
     useEffect(() => {
-        document.documentElement.classList.toggle('dark', isDark);
-    }, [isDark]);
+        if (mounted) {
+            document.documentElement.classList.toggle('dark', isDark);
+        }
+    }, [isDark, mounted]);
 
     return (
         <ThemeContext.Provider value={{ isDark, toggle }}>
