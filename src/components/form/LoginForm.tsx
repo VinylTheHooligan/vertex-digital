@@ -40,7 +40,7 @@ export default function LoginForm() {
                 ref={turnstileRef}
                 className="mt-3"
                 siteKey={process.env.NODE_ENV === 'development'
-                    ? '1x00000000000000000000AB'
+                    ? '3x00000000000000000000FF'
                     : process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
                 onSuccess={(token) => setToken(token)}
             />

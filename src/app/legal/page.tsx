@@ -16,7 +16,7 @@ export default function Legal() {
                             <b>SIRET :</b> 99354869200017 <br/>
                             <b>Ville :</b> Dunkerque <br/><br/>
                             <i>L&apos;adresse complète du siège peut être communiquée sur demande légitime afin de protéger la vie privée de l&apos;éditeur.</i> <br/><br/>
-                            <b>Email :</b> william.salembien@outlook.com <br/>
+                            <b>Email :</b> contact@vertex-digital.fr <br/>
                             <b>Directeur de la publication :</b> William Salembien
                         </p>
                     </section>

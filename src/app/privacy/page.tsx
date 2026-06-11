@@ -73,7 +73,7 @@ export default function Privacy() {
                             - droit d&apos;opposition<br/>                         
                             - droit à la limitation du traitement<br/><br/>
                                 
-                            Pour exercer vos droits : william.salembien@outlook.com
+                            Pour exercer vos droits : contact@vertex-digital.fr
                         </p>
                     </section>
                     <section>
