@@ -67,12 +67,12 @@ jobs:
 
       - name: Run remote deploy commands
         run: |
-          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" <<'EOF'
+          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" <<EOF
             set -e
             cd "${{ secrets.SSH_PATH }}"
             npm ci
             npx prisma generate
-            npx prisma migrate deploy
+            DATABASE_URL=${{ secrets.DATABASE_URL }} npx prisma migrate deploy
             npm run build 
             sudo systemctl restart vertex-digital
           EOF
