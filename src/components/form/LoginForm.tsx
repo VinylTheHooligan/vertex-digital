@@ -12,6 +12,12 @@ export default function LoginForm() {
     const [submitting, setSubmitting] = useState(false);
     const turnstileRef = useRef<TurnstileInstance>(null);
 
+    async function handleFormSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        await action(formData);
+    }
+
     async function action(formData: FormData) {
         if (!token || submitting) return;
         formData.append('token', token);
@@ -26,7 +32,7 @@ export default function LoginForm() {
     }
 
     return (
-       <form className="form-style" action={action}>
+       <form className="form-style" onSubmit={handleFormSubmit}>
             <FormField label="Utilisateur" id="username" name="username" type="text" />
             <FormField label="Mot de passe" id="password" name="password" type="password" />
             {errors && <span className="text-red-800">{errors}</span>}

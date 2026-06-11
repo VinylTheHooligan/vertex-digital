@@ -15,6 +15,12 @@ export default function ContactForm() {
     const [token, setToken] = useState<string | null>(null);
     const turnstileRef = useRef<TurnstileInstance>(null);
 
+    async function handleFormSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        await action(formData);
+    }
+
     async function action(formData: FormData) {
         if (!token || state.status === 'submitting') return;
         formData.append('token', token);
@@ -33,7 +39,7 @@ export default function ContactForm() {
     }
 
     return (
-       <form className="form-style" action={action}>
+       <form className="form-style" onSubmit={handleFormSubmit} >
             <FormField label="Email" id="email" name="email" type="email" 
                 error={state.status === 'error' ? state.fieldErrors?.email : undefined} />
             <FormField label="Sujet" id="subject" name="subject" type="text" 

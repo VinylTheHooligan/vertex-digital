@@ -27,6 +27,12 @@ const initialState: FormState<ProjectFieldErrors> = { status: 'idle' };
 export default function EditProjectForm({ project, technologies }: { project: Project, technologies: Technology[] }) {
     const [state, dispatch] = useReducer(formReducer<ProjectFieldErrors>, initialState);
 
+    async function handleFormSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        await action(formData);
+    }
+
     async function action(formData: FormData) {
         if (state.status === 'submitting') return;
         dispatch({ type: 'SUBMIT' });
@@ -38,7 +44,7 @@ export default function EditProjectForm({ project, technologies }: { project: Pr
     }
 
     return (
-        <form action={action} className="form-style">
+        <form onSubmit={handleFormSubmit} className="form-style">
             <FormField label="Nom" id="name" name="name"
                 error={state.status === 'error' ? state.fieldErrors?.name : undefined}
                 defaultValue={project.name}/>

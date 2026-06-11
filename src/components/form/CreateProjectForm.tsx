@@ -18,6 +18,12 @@ export default function CreateProjectForm({ technologies }: { technologies: Tech
     const [state, dispatch] = useReducer(formReducer<ProjectFieldErrors>, initialState);
     const formRef = useRef<HTMLFormElement>(null);
 
+    async function handleFormSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        await action(formData);
+    }
+
     async function action(formData: FormData) {
         if (state.status === 'submitting') return;
         dispatch({ type: 'SUBMIT' });
@@ -37,7 +43,7 @@ export default function CreateProjectForm({ technologies }: { technologies: Tech
     }
 
     return (
-        <form ref={formRef} action={action} className="form-style">
+        <form ref={formRef} onSubmit={handleFormSubmit} className="form-style">
             <FormField label="Nom" id="name" name="name" 
                 error={state.status === 'error' ? state.fieldErrors?.name : undefined}/>
             <FormField label="Description" id="description" name="description" rows={3} 
